@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BankSoalController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -7,6 +8,7 @@ use App\Http\Controllers\LightHouseController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KompetensiController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -66,4 +68,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/perusahaan/detail-perusahaan', [PerusahaanController::class, 'detail_perusahaan']);
     Route::get('/perusahaan/detail-departemen', [PerusahaanController::class, 'detail_departemen']);
     Route::resource('perusahaan', PerusahaanController::class)->except(['show']);
+
+    // kompetensi
+    Route::get('/kompetensi/list', [KompetensiController::class, 'list'])->name('perusahaan.list');
+    Route::post('/kompetensi/{perusahaan}/update-status', [KompetensiController::class, 'update_status'])->name('perusahaan.update-status');
+    Route::get('/kompetensi/detail-kompetensi', [KompetensiController::class, 'detail_kompetensi']);
+    Route::resource('kompetensi', KompetensiController::class)->except(['show']);
+
+    // bank soal
+    Route::get('/bank-soal/list', [BankSoalController::class, 'list'])->name('perusahaan.list');
+    Route::post('/bank-soal/{perusahaan}/update-status', [BankSoalController::class, 'update_status'])->name('perusahaan.update-status');
+    Route::get('/bank-soal/detail-kompetensi', [BankSoalController::class, 'detail_kompetensi']);
+    Route::resource('bank-soal', BankSoalController::class)->except(['show']);
 });

@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="menu-item {{ isActiveMenuItem('bank-soal') }}">
-                <a href="/home" class="menu-link">
+                <a href="/bank-soal" class="menu-link">
                     <i class="menu-icon ti ti-list"></i>
                     <div data-i18n="Bank Soal">Bank Soal</div>
                 </a>
@@ -41,7 +41,7 @@
                 {{-- <li class="menu-header small">
                     <span class="menu-header-text" data-i18n="Master Data">Master Data</span>
                 </li> --}}
-                <li class="menu-item {{ isActiveSubMenu(['ships', 'branches', 'light-houses', 'users', 'perusahaan']) }}">
+                <li class="menu-item {{ isActiveSubMenu(['ships', 'branches', 'light-houses', 'users', 'perusahaan','kompetensi']) }}">
                     <a href="#" class="menu-link menu-toggle">
                         <i class="menu-icon ti ti-settings"></i>
                         <div data-i18n="Konfigurasi">Konfigurasi</div>
@@ -64,6 +64,13 @@
                         <li class="menu-item {{ isActiveMenuItem('perusahaan') }}">
                             <a href="/perusahaan" class="menu-link">
                                 <div data-i18n="Konfigurasi Perusahaan">Konfigurasi Perusahaan</div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="menu-sub">
+                        <li class="menu-item {{ isActiveMenuItem('kompetensi') }}">
+                            <a href="/kompetensi" class="menu-link">
+                                <div data-i18n="Master Kompetensi">Master Kompetensi</div>
                             </a>
                         </li>
                     </ul>

@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Perusahaan</h5>
+                <h5 class="modal-title">Tambah Departemen</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('perusahaan.store') }}" class="default-form" autocomplete="off"
@@ -14,15 +14,9 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 mb-3 form-group">
-                            <label for="ship_name" class="form-label">Nama Perusahaan</label>
+                            <label for="ship_name" class="form-label">Nama Departemen</label>
                             <input type="text" id="ship_name" name="ship_name" class="form-control"
-                                placeholder="Nama Perusahaan" />
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="col-12 mb-3 form-group">
-                            <label for="ship_type" class="form-label">Upload Logo</label>
-                            <input type="file" id="ship_type" name="ship_type" class="form-control"
-                                placeholder="Upload Logo" accept="image/*" />
+                                placeholder="Nama Departemen" />
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>

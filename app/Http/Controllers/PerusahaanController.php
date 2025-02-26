@@ -29,6 +29,24 @@ class PerusahaanController extends Controller
         return view('perusahaan.index', $data);
     }
 
+    public function detail_perusahaan()
+    {
+        $data = $this->createEditData();
+        $list = $this->list();
+        $data['active_menu'] = 'detail_perusahaan';
+        $data['list'] = $list;
+        return view('perusahaan.detail-perusahaan', $data);
+    }
+
+    public function detail_departemen()
+    {
+        $data = $this->createEditData();
+        $list = $this->list();
+        $data['active_menu'] = 'detail_departemen';
+        $data['list'] = $list;
+        return view('perusahaan.detail-departemen', $data);
+    }
+
     public function list()
     {
         $perusahaan = new LightHouse;

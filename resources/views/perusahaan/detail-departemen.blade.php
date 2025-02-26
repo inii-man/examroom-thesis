@@ -11,11 +11,11 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-md-10 col-12">
-            <h4 class="fw-bold mb-0">Konfigurasi Perusahaan</h4>
+            <h4 class="fw-bold mb-0">Perusahaan ABC - Karyawan di Departemen 1</h4>
         </div>
         <div class="col-md-2 col-12 text-end">
-            <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modal-add"><i
-                    class="tf-icons me-3 ti ti-plus"></i>Perusahaan</button>
+            {{-- <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modal-add"><i
+                    class="tf-icons me-3 ti ti-plus"></i>Perusahaan</button> --}}
         </div>
     </div>
     <div class="card" style="border: 0.5px solid; 
@@ -25,11 +25,10 @@
                 <thead class="border-top">
                     <tr>
                         <th>No</th>
-                        <th>Perusahaan</th>
-                        <th>Jumlah Departemen</th>
-                        <th>Logo perusahaan</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th>Nama Karyawan</th>
+                        <th>Departemen</th>
+                        <th>Email</th>
+                        <th>Role</th>
                     </tr>
                 </thead>
                 {{-- <tbody>
@@ -67,7 +66,7 @@
         const dataTableId = "#ships-table";
         const AddTitle = "Add Ship";
         const EditTitle = "Edit Ship";
-        const searchPlaceholder = "Search Perusahaan";
+        const searchPlaceholder = "Search Karyawan";
         const addButtonTitle = "Ships";
         //Change above const value for faster development
 
@@ -93,20 +92,12 @@
 
         function datatables() {
             let dataTa = [{
-                    id: 1,
-                    perusahaan: 'PT. ABC',
-                    jumlah_departemen: '3 Departemen',
-                    logo_perusahaan: '<a href="javascript:void(0)"><i class="ti ti-paperclip"></i> <u>Logo Company</u></a>',
-                    status: '<span class="badge bg-label-success">Acive</span>',
-                    action: `
-                        <div class="d-flex align-items-center gap-2">
-                            <a href="/perusahaan/detail-perusahaan" class="btn btn-sm btn-icon btn-detail"><i class="ti ti-file-text"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-edit"><i class="ti ti-pencil"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-delete"><i class="ti ti-trash"></i></a>
-                        </div>
-                        `
-                },
-            ];
+                id: 1,
+                nama_karyawan: 'Karyawan 1',
+                departemen: 'Departemen 1',
+                email: 'email',
+                role: 'role',
+            }];
             $(dataTableId).DataTable({
                 // ajax: routeList,
                 data: dataTa,
@@ -117,23 +108,17 @@
                 columns: [{
                         data: 'id'
                     },
-                    // {
-                    //     data: 'DT_RowIndex'
-                    // },
                     {
-                        data: 'perusahaan'
+                        data: 'nama_karyawan'
                     },
                     {
-                        data: 'jumlah_departemen'
+                        data: 'departemen'
                     },
                     {
-                        data: 'logo_perusahaan'
+                        data: 'email'
                     },
                     {
-                        data: 'status'
-                    },
-                    {
-                        data: 'action'
+                        data: 'role'
                     },
                 ],
                 dom: '<"row"' +

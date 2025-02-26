@@ -279,6 +279,10 @@
             border-color: {{ app_config('primary_color') }} !important;
         }
 
+        .layout-navbar.navbar-detached {
+            border-radius: 0;
+        }
+
         /*# sourceMappingURL=style-2024-11-11-08-03-47-483_button.css.map */
     </style>
 </head>

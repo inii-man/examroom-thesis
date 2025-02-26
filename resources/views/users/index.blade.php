@@ -11,7 +11,7 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-md-10 col-12">
-            <h4 class="fw-bold mb-0"><span class="text-muted fw-light">Master Data /</span> Karyawan</h4>
+            <h4 class="fw-bold mb-0">Konfigurasi Pengguna</h4>
         </div>
         <div class="col-md-2 col-12 text-end">
             <button class="btn btn-primary btn-icon" data-bs-toggle="offcanvas" data-bs-target="#modal-filter"><i
@@ -79,14 +79,62 @@
         // Datatable Function
 
         function datatables() {
+            let dataTa = [{
+                    id: 1,
+                    profile_pic: '<div class="avatar me-2"><img src="/assets/img/avatars/1.png" alt="Avatar" class="w-px-40 h-auto rounded-circle"></div>',
+                    name: 'John Doe',
+                    email: '2a5m9@example.com',
+                    role: 'Admin',
+                    status: '<span class="badge bg-label-success">Active</span>',
+                    action: '<div class="dropdown">' +
+                        '<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">' +
+                        '<i class="ti ti-dots-vertical"></i>' +
+                        '</button>' +
+                        '<div class="dropdown-menu dropdown-menu-end">' +
+                        '<a class="dropdown-item" href="javascript:void(0);">' +
+                        '<i class="ti ti-edit me-2"></i>' +
+                        'Edit' +
+                        '</a>' +
+                        '<a class="dropdown-item" href="javascript:void(0);">' +
+                        '<i class="ti ti-trash me-2"></i>' +
+                        'Delete' +
+                        '</a>' +
+                        '</div>' +
+                        '</div>'
+                },
+                {
+                    id: 2,
+                    profile_pic: '<div class="avatar me-2"><img src="/assets/img/avatars/1.png" alt="Avatar" class="w-px-40 h-auto rounded-circle"></div>',
+                    name: 'John Doe',
+                    email: '2a5m9@example.com',
+                    role: 'Admin',
+                    status: '<span class="badge bg-label-success">Active</span>',
+                    action: '<div class="dropdown">' +
+                        '<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">' +
+                        '<i class="ti ti-dots-vertical"></i>' +
+                        '</button>' +
+                        '<div class="dropdown-menu dropdown-menu-end">' +
+                        '<a class="dropdown-item" href="javascript:void(0);">' +
+                        '<i class="ti ti-edit me-2"></i>' +
+                        'Edit' +
+                        '</a>' +
+                        '<a class="dropdown-item" href="javascript:void(0);">' +
+                        '<i class="ti ti-trash me-2"></i>' +
+                        'Delete' +
+                        '</a>' +
+                        '</div>' +
+                        '</div>'
+                },
+            ];
             $(dataTableId).DataTable({
-                ajax: routeList,
-                serverSide: false,
-                processing: true,
+                // ajax: routeList,
+                // serverSide: false,
+                // processing: true,
+                data: dataTa,
                 destroy: true,
                 scrollX: true,
                 columns: [{
-                        data: 'DT_RowIndex'
+                        data: 'id'
                     },
                     {
                         data: 'profile_pic'
@@ -352,6 +400,5 @@
             $('#modal-filter').offcanvas('hide');
             tooltip();
         });
-
     </script>
 @endsection

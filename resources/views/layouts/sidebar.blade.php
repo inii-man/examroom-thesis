@@ -41,14 +41,14 @@
                 {{-- <li class="menu-header small">
                     <span class="menu-header-text" data-i18n="Master Data">Master Data</span>
                 </li> --}}
-                <li class="menu-item {{ isActiveSubMenu(['ships', 'branches', 'light-houses', 'perusahaan']) }}">
+                <li class="menu-item {{ isActiveSubMenu(['ships', 'branches', 'light-houses', 'users', 'perusahaan']) }}">
                     <a href="#" class="menu-link menu-toggle">
                         <i class="menu-icon ti ti-settings"></i>
                         <div data-i18n="Konfigurasi">Konfigurasi</div>
                     </a>
                     <ul class="menu-sub">
-                        <li class="menu-item {{ isActiveMenuItem('ships') }}">
-                            <a href="/ships" class="menu-link">
+                        <li class="menu-item {{ isActiveMenuItem('users') }}">
+                            <a href="/users" class="menu-link">
                                 <div data-i18n="Konfigurasi Pengguna">Konfigurasi Pengguna</div>
                             </a>
                         </li>
@@ -76,20 +76,20 @@
             <li class="menu-header small">
                 <span class="menu-header-text" data-i18n="Configuration">Configuration</span>
             </li>
-            <li class="menu-item {{ isActiveMenuItem('profile') }}">
+            {{-- <li class="menu-item {{ isActiveMenuItem('profile') }}">
                 <a href="/get-profile" class="menu-link">
                     <i class="menu-icon ti ti-user"></i>
                     <div data-i18n="My Profile">My Profile</div>
                 </a>
-            </li>
-            @can('user.list')
+            </li> --}}
+            {{-- @can('user.list')
                 <li class="menu-item {{ isActiveMenuItem('users') }}">
                     <a href="/users" class="menu-link">
                         <i class="menu-icon ti ti-users"></i>
                         <div data-i18n="Users">Users</div>
                     </a>
                 </li>
-            @endcan
+            @endcan --}}
             @can('role.list')
             <li class="menu-item {{ isActiveMenuItem('roles') }}">
                 <a href="/roles" class="menu-link">

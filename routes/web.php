@@ -63,5 +63,7 @@ Route::group(['middleware' => ['auth']], function () {
     // perusahaan
     Route::get('/perusahaan/list', [PerusahaanController::class, 'list'])->name('perusahaan.list');
     Route::post('/perusahaan/{perusahaan}/update-status', [PerusahaanController::class, 'update_status'])->name('perusahaan.update-status');
-    Route::resource('perusahaan', PerusahaanController::class);
+    Route::get('/perusahaan/detail-perusahaan', [PerusahaanController::class, 'detail_perusahaan']);
+    Route::get('/perusahaan/detail-departemen', [PerusahaanController::class, 'detail_departemen']);
+    Route::resource('perusahaan', PerusahaanController::class)->except(['show']);
 });

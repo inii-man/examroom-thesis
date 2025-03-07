@@ -10,46 +10,71 @@
 
 @section('content')
     <div class="row mb-4">
-        <div class="col-md-10 col-12">
-            <h4 class="fw-bold mb-0">Konfigurasi Perusahaan</h4>
+        <div class="col-md-9 col-12">
+            <h4 class="fw-bold mb-0">Konfigurasi Assesment</h4>
         </div>
-        <div class="col-md-2 col-12 text-end">
-            <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modal-add"><i
-                    class="tf-icons me-3 ti ti-plus"></i>Perusahaan</button>
+        <div class="col-md-3 col-12 text-end">
+            {{-- <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modal-add"><i
+                    class="tf-icons me-3 ti ti-plus"></i>Data Assesment</button> --}}
+            <a href="/konfigurasi-assesment/detail-konfigurasi" class="btn btn-primary"><i
+                class="tf-icons me-3 ti ti-plus"></i>Tambah Assesment</a>
         </div>
     </div>
     <div class="card" style="border: 0.5px solid; 
         border-radius: 5px;">
-        <div class="card-datatable border-bottom table-responsive">
-            <table class="table" id="ships-table">
-                <thead class="border-top">
-                    <tr>
-                        <th>No</th>
-                        <th>Perusahaan</th>
-                        <th>Jumlah Departemen</th>
-                        <th>Logo perusahaan</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                {{-- <tbody>
-                    @foreach ($list as $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>
-                                <a href="{{ url('/') }}" class="btn btn-sm btn-icon btn-edit"><i
-                                        class="tf-icons ti ti-pencil"></i></a>
-                                <a href="{{ url('/') }}" class="btn btn-sm btn-icon btn-delete"><i
-                                        class="tf-icons ti ti-trash"></i></a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody> --}}
-            </table>
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                    data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="true">
+                    Data Aktif
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
+                    Data Tidak Aktif
+                </button>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="navs-top-home" role="tabpanel">
+                <div class="card-datatable border-bottom table-responsive">
+                    <table class="table" id="ships-table">
+                        <thead class="border-top">
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Assesment</th>
+                                <th>Departemen</th>
+                                <th>Posisi/Jabatan</th>
+                                <th>Waktu Assesment</th>
+                                <th>Rate Penilaian</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
+                <div class="card-datatable border-bottom table-responsive">
+                    <table class="table" id="ships-table1">
+                        <thead class="border-top">
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Assesment</th>
+                                <th>Departemen</th>
+                                <th>Posisi/Jabatan</th>
+                                <th>Waktu Assesment</th>
+                                <th>Rate Penilaian</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
         </div>
+
     </div>
     @include('perusahaan.modal')
 @endsection
@@ -93,20 +118,21 @@
 
         function datatables() {
             let dataTa = [{
-                    id: 1,
-                    perusahaan: 'PT. ABC',
-                    jumlah_departemen: '3 Departemen',
-                    logo_perusahaan: '<a href="javascript:void(0)"><i class="ti ti-paperclip"></i> <u>Logo Company</u></a>',
-                    status: '<span class="badge bg-label-success">Active</span>',
-                    action: `
-                        <div class="d-flex align-items-center gap-2">
-                            <a href="/perusahaan/detail-perusahaan" class="btn btn-sm btn-icon btn-detail"><i class="ti ti-file-text"></i></a>
+                id: 1,
+                nama_assesment: 'Assesment 1',
+                departemen: 'Departemen 1',
+                posisi: 'Posisi 1',
+                waktu_assesment: 'Waktu Assesment 1',
+                rate_penilaian: 'Rate Penilaian 1',
+                status: '<span class="badge bg-label-success">Active</span>',
+                action: `
+                         <div class="d-flex align-items-center gap-2">
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-detail"><i class="ti ti-file-text"></i></a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-edit"><i class="ti ti-pencil"></i></a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-delete"><i class="ti ti-trash"></i></a>
                         </div>
                         `
-                },
-            ];
+            }, ];
             $(dataTableId).DataTable({
                 // ajax: routeList,
                 data: dataTa,
@@ -117,17 +143,20 @@
                 columns: [{
                         data: 'id'
                     },
-                    // {
-                    //     data: 'DT_RowIndex'
-                    // },
                     {
-                        data: 'perusahaan'
+                        data: 'nama_assesment'
                     },
                     {
-                        data: 'jumlah_departemen'
+                        data: 'departemen'
                     },
                     {
-                        data: 'logo_perusahaan'
+                        data: 'posisi'
+                    },
+                    {
+                        data: 'waktu_assesment'
+                    },
+                    {
+                        data: 'rate_penilaian'
                     },
                     {
                         data: 'status'

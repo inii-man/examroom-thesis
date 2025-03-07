@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="text-center mt-3">
-                            <a href="javascript:void(0)" style="border-radius: 50px; width: 100%; background-color: #1D41D3; color: #fff" class="btn">Buka Perusahaan</a>
+                            <a href="/konfigurasi-assesment" style="border-radius: 50px; width: 100%; background-color: #1D41D3; color: #fff" class="btn">Buka Perusahaan</a>
                         </div>
                     </div>
                 </div>

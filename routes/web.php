@@ -9,6 +9,8 @@ use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KompetensiController;
+use App\Http\Controllers\KonfigurasiAssesmentController;
+use App\Http\Controllers\KonfigurasiPerusahaanController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -80,4 +82,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/bank-soal/{perusahaan}/update-status', [BankSoalController::class, 'update_status'])->name('perusahaan.update-status');
     Route::get('/bank-soal/detail-kompetensi', [BankSoalController::class, 'detail_kompetensi']);
     Route::resource('bank-soal', BankSoalController::class)->except(['show']);
+
+    // konfigurasi perusahaan
+    Route::get('/konfigurasi-assesment/list', [KonfigurasiAssesmentController::class, 'list'])->name('perusahaan.list');
+    Route::post('/konfigurasi-assesment/{perusahaan}/update-status', [KonfigurasiAssesmentController::class, 'update_status'])->name('perusahaan.update-status');
+    Route::get('/konfigurasi-assesment/detail-konfigurasi', [KonfigurasiAssesmentController::class, 'detail_konfigurasi']);
+    Route::resource('konfigurasi-assesment', KonfigurasiAssesmentController::class)->except(['show']);
 });

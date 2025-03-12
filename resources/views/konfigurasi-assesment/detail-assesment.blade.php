@@ -10,29 +10,71 @@
 
 @section('content')
     <div class="row mb-4">
-        <div class="col-md-9 col-12">
-            <h4 class="fw-bold mb-0">Konfigurasi Assesment</h4>
-        </div>
-        <div class="col-md-3 col-12 text-end">
-            {{-- <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modal-add"><i
-                    class="tf-icons me-3 ti ti-plus"></i>Data Assesment</button> --}}
-            <a href="/konfigurasi-assesment/detail-konfigurasi" class="btn btn-primary"><i
-                class="tf-icons me-3 ti ti-plus"></i>Tambah Assesment</a>
+        <div class="col-md-10 col-12">
+            <h4 class="fw-bold mb-0">Konfigurasi Asesmen / ABC / Detail Asesmen</h4>
         </div>
     </div>
     <div class="card" style="border: 0.5px solid; 
+        border-radius: 5px;">
+        <div class="card-header d-flex justify-content-between">
+            <div>
+                <h4>Detail Exam</h4>
+            </div>
+            <div>
+                <button class="btn btn-outline-primary"><span class="tf-icons ti ti-download"></span>Download Recapitulation</button>
+            </div>
+        </div>
+        <div class="card-body mt-5 row">
+            <div class="col-md-4 col-12">
+                <div>
+                    <span class="text-muted">Nama Asesmen</span>
+                    <h5>Assesment 1</h5>
+                </div>
+                <div>
+                    <span class="text-muted">Departemen</span>
+                    <h5>Departemen 1</h5>
+                </div>
+                <div>
+                    <span class="text-muted">Posisi/Jabatan</span>
+                    <h5>Senior</h5>
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div>
+                    <span class="text-muted">Pertanyaan Yang Digunakan</span>
+                    <h5>Pertanyaan untuk perusahaan ABC</h5>
+                </div>
+                <div>
+                    <span class="text-muted">Mulai Assesment</span>
+                    <h5>13:01:00, 24 Agustus 2024</h5>
+                </div>
+                <div>
+                    <span class="text-muted">Berakhir Assesment</span>
+                    <h5>13:01:00, 25 Agustus 2024</h5>
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div>
+                    <h5>Tingkat Kemahiran Pertanyaan: 5</h5>
+                    <h5>Batas Rating Penilaian Peserta: 5</h5>
+                    <h5>Batas Rating Penilaian Assesor: 5</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3" style="border: 0.5px solid; 
         border-radius: 5px;">
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
                 <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
                     data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="true">
-                    Data Aktif
+                    Penilaian Individu
                 </button>
             </li>
             <li class="nav-item">
                 <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                     data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
-                    Data Tidak Aktif
+                    Penilaian Oleh Asesor
                 </button>
             </li>
         </ul>
@@ -43,11 +85,7 @@
                         <thead class="border-top">
                             <tr>
                                 <th>No</th>
-                                <th>Nama Assesment</th>
-                                <th>Departemen</th>
-                                <th>Posisi/Jabatan</th>
-                                <th>Waktu Assesment</th>
-                                <th>Rate Penilaian</th>
+                                <th>Nama Karyawan</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -61,12 +99,9 @@
                         <thead class="border-top">
                             <tr>
                                 <th>No</th>
-                                <th>Nama Assesment</th>
-                                <th>Departemen</th>
-                                <th>Posisi/Jabatan</th>
-                                <th>Waktu Assesment</th>
-                                <th>Rate Penilaian</th>
-                                <th>Status</th>
+                                <th>Nama Karyawan</th>
+                                <th>Nama Asesor</th>
+                                <th>Status Review</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -76,7 +111,6 @@
         </div>
 
     </div>
-    @include('perusahaan.modal')
 @endsection
 
 @section('page-js')
@@ -90,9 +124,10 @@
         const routeEdit = "{{ route('ships.edit', ['ship' => ':ship']) }}";
         const routeParam = "ship"
         const dataTableId = "#ships-table";
+        const dataTableIdd = "#ships-table1";
         const AddTitle = "Add Ship";
         const EditTitle = "Edit Ship";
-        const searchPlaceholder = "Search Perusahaan";
+        const searchPlaceholder = "Search";
         const addButtonTitle = "Ships";
         //Change above const value for faster development
 
@@ -119,16 +154,24 @@
         function datatables() {
             let dataTa = [{
                 id: 1,
-                nama_assesment: 'Assesment 1',
-                departemen: 'Departemen 1',
-                posisi: 'Posisi 1',
-                waktu_assesment: 'Waktu Assesment 1',
-                rate_penilaian: 'Rate Penilaian 1',
-                status: '<span class="badge bg-label-success">Active</span>',
+                nama_assesment: 'Samuel Alfredo',
+                departemen: 'Selesai',
                 action: `
                          <div class="d-flex align-items-center gap-2">
-                            <a href="/konfigurasi-assesment/detail-assesment" class="btn btn-sm btn-icon btn-detail"><i class="ti ti-file-text"></i></a>
-                            <a href="/konfigurasi-assesment/detail-manajemen" class="btn btn-sm btn-icon btn-manage"><i class="ti ti-settings"></i></a>
+                            
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-edit"><i class="ti ti-pencil"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-delete"><i class="ti ti-trash"></i></a>
+                        </div>
+                        `
+            }, ];
+            let dataTaa = [{
+                id: 1,
+                nama_assesment: 'Samuel Alfredo',
+                departemen: 'Sulaiman',
+                posisi: 'Selesai',
+                action: `
+                         <div class="d-flex align-items-center gap-2">
+                            
                             <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-edit"><i class="ti ti-pencil"></i></a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-delete"><i class="ti ti-trash"></i></a>
                         </div>
@@ -140,7 +183,6 @@
                 // serverSide: false,
                 // processing: true,
                 destroy: true,
-                scrollX: true,
                 columns: [{
                         data: 'id'
                     },
@@ -149,18 +191,6 @@
                     },
                     {
                         data: 'departemen'
-                    },
-                    {
-                        data: 'posisi'
-                    },
-                    {
-                        data: 'waktu_assesment'
-                    },
-                    {
-                        data: 'rate_penilaian'
-                    },
-                    {
-                        data: 'status'
                     },
                     {
                         data: 'action'
@@ -183,19 +213,79 @@
                         previous: '<i class="ti ti-chevron-left ti-sm"></i>'
                     }
                 },
-                buttons: [
-                    @if (auth()->user()->hasPermissionTo($managePermission))
-                        {
-                            text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">' +
-                                addButtonTitle + '</span>',
-                            className: 'add-new btn btn-primary ms-4 waves-effect waves-light',
-                            attr: {
-                                'data-bs-toggle': 'modal',
-                                'data-bs-target': '#modal-add'
-                            }
-                        }
-                    @endif
+                // buttons: [
+                //     @if (auth()->user()->hasPermissionTo($managePermission))
+                //         {
+                //             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Course</span>',
+                //             className: 'add-new btn btn-primary ms-4 waves-effect waves-light',
+                //             attr: {
+                //                 'data-bs-toggle': 'modal',
+                //                 'data-bs-target': '#modal-add'
+                //             }
+                //         },
+                        
+                //     @endif
+                // ],
+            });
+
+            $(dataTableIdd).DataTable({
+                // ajax: routeList,
+                data: dataTaa,
+                // serverSide: false,
+                // processing: true,
+                destroy: true,
+                columns: [{
+                        data: 'id'
+                    },
+                    {
+                        data: 'nama_assesment'
+                    },
+                    {
+                        data: 'departemen'
+                    },
+                    {
+                        data: 'posisi'
+                    },
+                    {
+                        data: 'action'
+                    },
                 ],
+                dom: '<"row"' +
+                    '<"col-md-2"<"ms-n2"l>>' +
+                    '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-6 mb-md-0 mt-n6 mt-md-0"f>>' +
+                    '>t' +
+                    '<"row"' +
+                    '<"col-sm-12 col-md-6"i>' +
+                    '<"col-sm-12 col-md-6"p>' +
+                    '>',
+                language: {
+                    sLengthMenu: '_MENU_',
+                    search: '',
+                    searchPlaceholder: searchPlaceholder,
+                    paginate: {
+                        next: '<i class="ti ti-chevron-right ti-sm"></i>',
+                        previous: '<i class="ti ti-chevron-left ti-sm"></i>'
+                    }
+                },
+                // buttons: [
+                //     @if (auth()->user()->hasPermissionTo($managePermission))
+                //         {
+                //             text: '<i class="ti ti-send me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Send Email</span>',
+                //             className: 'add-new btn btn-outline-primary ms-4 waves-effect waves-light',
+                //             attr: {
+                //                 'data-bs-toggle': 'modal',
+                //                 'data-bs-target': '#modal-add'
+                //             }
+                //         },{
+                //             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Users</span>',
+                //             className: 'add-new btn btn-primary ms-4 waves-effect waves-light',
+                //             attr: {
+                //                 'data-bs-toggle': 'modal',
+                //                 'data-bs-target': '#modal-add'
+                //             }
+                //         }
+                //     @endif
+                // ],
             });
         }
 

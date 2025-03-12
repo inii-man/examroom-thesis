@@ -38,6 +38,24 @@ class KonfigurasiAssesmentController extends Controller
         return view('konfigurasi-assesment.detail-konfigurasi', $data);
     }
 
+    public function detail_assesment()
+    {
+        $data = $this->createEditData();
+        $list = $this->list();
+        $data['active_menu'] = 'detail_assesment';
+        $data['list'] = $list;
+        return view('konfigurasi-assesment.detail-assesment', $data);
+    }
+
+    public function detail_manajemen()
+    {
+        $data = $this->createEditData();
+        $list = $this->list();
+        $data['active_menu'] = 'detail_manajemen';
+        $data['list'] = $list;
+        return view('konfigurasi-assesment.detail-manajemen', $data);
+    }
+
 
     public function list()
     {

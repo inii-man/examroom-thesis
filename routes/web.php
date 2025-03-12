@@ -87,5 +87,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/konfigurasi-assesment/list', [KonfigurasiAssesmentController::class, 'list'])->name('perusahaan.list');
     Route::post('/konfigurasi-assesment/{perusahaan}/update-status', [KonfigurasiAssesmentController::class, 'update_status'])->name('perusahaan.update-status');
     Route::get('/konfigurasi-assesment/detail-konfigurasi', [KonfigurasiAssesmentController::class, 'detail_konfigurasi']);
+    Route::get('/konfigurasi-assesment/detail-assesment', [KonfigurasiAssesmentController::class, 'detail_assesment']);
+    Route::get('/konfigurasi-assesment/detail-manajemen', [KonfigurasiAssesmentController::class, 'detail_manajemen']);
     Route::resource('konfigurasi-assesment', KonfigurasiAssesmentController::class)->except(['show']);
 });

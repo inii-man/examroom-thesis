@@ -21,14 +21,13 @@
     <div class="card" style="border: 0.5px solid; 
         border-radius: 5px;">
         <div class="card-datatable border-bottom table-responsive">
-            <table class="table" id="ships-table">
+            <table class="table" id="perusahaan-table">
                 <thead class="border-top">
                     <tr>
                         <th>No</th>
                         <th>Perusahaan</th>
                         <th>Jumlah Departemen</th>
                         <th>Logo perusahaan</th>
-                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -56,19 +55,19 @@
 
 @section('page-js')
     <script>
-        @php
-            $managePermission = 'ship.manage';
-        @endphp
-        const routeList = "{{ route('ships.list') }}";
-        const routeStore = "{{ route('ships.store') }}";
-        const routeUpdate = "{{ route('ships.update', ['ship' => ':ship']) }}";
-        const routeEdit = "{{ route('ships.edit', ['ship' => ':ship']) }}";
-        const routeParam = "ship"
-        const dataTableId = "#ships-table";
-        const AddTitle = "Add Ship";
-        const EditTitle = "Edit Ship";
+        // @php
+        //     $managePermission = 'perusahaan.manage';
+        // @endphp
+        const routeList = "{{ route('perusahaan.list') }}";
+        const routeStore = "{{ route('perusahaan.store') }}";
+        const routeUpdate = "{{ route('perusahaan.update', ['perusahaan' => ':perusahaan']) }}";
+        const routeEdit = "{{ route('perusahaan.edit', ['perusahaan' => ':perusahaan']) }}";
+        const routeParam = "perusahaan"
+        const dataTableId = "#perusahaan-table";
+        const AddTitle = "Add perusahaan";
+        const EditTitle = "Edit perusahaan";
         const searchPlaceholder = "Search Perusahaan";
-        const addButtonTitle = "Ships";
+        const addButtonTitle = "perusahaan";
         //Change above const value for faster development
 
         $(document).ready(function() {
@@ -87,50 +86,32 @@
             filterData();
         }
 
-
-
         // Datatable Function
 
         function datatables() {
-            let dataTa = [{
-                    id: 1,
-                    perusahaan: 'PT. ABC',
-                    jumlah_departemen: '3 Departemen',
-                    logo_perusahaan: '<a href="javascript:void(0)"><i class="ti ti-paperclip"></i> <u>Logo Company</u></a>',
-                    status: '<span class="badge bg-label-success">Active</span>',
-                    action: `
-                        <div class="d-flex align-items-center gap-2">
-                            <a href="/perusahaan/detail-perusahaan" class="btn btn-sm btn-icon btn-detail"><i class="ti ti-file-text"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-edit"><i class="ti ti-pencil"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-delete"><i class="ti ti-trash"></i></a>
-                        </div>
-                        `
-                },
-            ];
             $(dataTableId).DataTable({
-                // ajax: routeList,
-                data: dataTa,
-                // serverSide: false,
-                // processing: true,
+                ajax: "{{ route('perusahaan.list') }}",
+                // data: dataTa,
+                // url: routeList,
+                serverSide: false,
+                processing: true,
                 destroy: true,
                 scrollX: true,
-                columns: [{
-                        data: 'id'
-                    },
+                columns: [
                     // {
-                    //     data: 'DT_RowIndex'
+                    //     data: 'id'
                     // },
                     {
-                        data: 'perusahaan'
+                        data: 'DT_RowIndex'
                     },
                     {
-                        data: 'jumlah_departemen'
+                        data: 'nama_perusahaan'
                     },
                     {
-                        data: 'logo_perusahaan'
+                        data: 'nama_perusahaan'
                     },
                     {
-                        data: 'status'
+                        data: 'nama_perusahaan'
                     },
                     {
                         data: 'action'
@@ -153,19 +134,6 @@
                         previous: '<i class="ti ti-chevron-left ti-sm"></i>'
                     }
                 },
-                buttons: [
-                    @if (auth()->user()->hasPermissionTo($managePermission))
-                        {
-                            text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">' +
-                                addButtonTitle + '</span>',
-                            className: 'add-new btn btn-primary ms-4 waves-effect waves-light',
-                            attr: {
-                                'data-bs-toggle': 'modal',
-                                'data-bs-target': '#modal-add'
-                            }
-                        }
-                    @endif
-                ],
             });
         }
 

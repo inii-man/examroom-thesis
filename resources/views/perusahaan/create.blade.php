@@ -29,7 +29,7 @@
             </div>
             <div class="card-body">
                 @if (isset($light_house))
-                <form action="{{ route('perusahaan.update', ['light_house' => $light_house->light_house_id]) }}"
+                <form action="{{ route('perusahaan.update', ['perusahaan' => $perusahaan->id]) }}"
                     class="default-form" function-callback="afterAction">
                     @method('PUT')
                     <input type="hidden" id="id" name="light_house_id"

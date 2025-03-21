@@ -10,18 +10,18 @@
                 function-callback="afterAction">
                 @csrf
                 <input type="hidden" name="_method" value="POST">
-                <input type="hidden" id="id" name="ship_id" />
+                <input type="hidden" id="id" name="id" />
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 mb-3 form-group">
-                            <label for="ship_name" class="form-label">Nama Perusahaan</label>
-                            <input type="text" id="ship_name" name="ship_name" class="form-control"
+                            <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>
+                            <input type="text" id="nama_perusahaan" name="nama_perusahaan" class="form-control"
                                 placeholder="Nama Perusahaan" />
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="col-12 mb-3 form-group">
-                            <label for="ship_type" class="form-label">Upload Logo</label>
-                            <input type="file" id="ship_type" name="ship_type" class="form-control"
+                            <label for="perusahaan_logo" class="form-label">Upload Logo</label>
+                            <input type="file" id="perusahaan_logo" class="form-control"
                                 placeholder="Upload Logo" accept="image/*" />
                             <div class="invalid-feedback"></div>
                         </div>

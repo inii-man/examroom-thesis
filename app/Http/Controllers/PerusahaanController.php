@@ -11,14 +11,14 @@ use Exception;
 //Additional Import
 use App\Http\Requests\LightHouseRequest;
 use App\Models\LightHouse;
-
+use App\Models\Perusahaan;
 
 class PerusahaanController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:light_house.list|light_house.manage', ['only' => ['index', 'show']]);
-        $this->middleware('permission:light_house.manage', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+        // $this->middleware('permission:light_house.list|light_house.manage', ['only' => ['index', 'show']]);
+        // $this->middleware('permission:light_house.manage', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     }
 
     public function index()
@@ -49,52 +49,26 @@ class PerusahaanController extends Controller
 
     public function list()
     {
-        $perusahaan = new LightHouse;
+        $perusahaan = new Perusahaan();
 
-        if (request()->has('status')) {
-            $perusahaan = $perusahaan->where('status', request()->status);
-        }
+        return datatables()->of($perusahaan->get())
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                $icon = ($row->status) ? "ti-circle-x" : "ti-circle-check";
+                $color = ($row->status) ? "danger" : "success";
 
-        if (request()->has('light_house_structure')) {
-            $perusahaan = $perusahaan->where('light_house_structure', request()->light_house_structure);
-        }
+                $url = route('perusahaan.update-status', $row->id);
 
-        if (request()->has('light_house_type')) {
-            $perusahaan = $perusahaan->where('light_house_type', request()->light_house_type);
-        }
-        return $perusahaan->get();
-        // return datatables()->of($perusahaan->get())
-        //     ->addIndexColumn()
-        //     ->editColumn('status', function ($light_house) {
-        //         if ($light_house->status == 1) {
-        //             return '<span class="badge rounded-pill bg-label-success">Active</span>';
-        //         } else {
-        //             return '<span class="badge rounded-pill bg-label-danger">Inactive</span>';
-        //         }
-        //     })
-        //     ->addColumn('action', function ($row) {
-        //         if (auth()->user()->hasPermissionTo('light_house.manage')) {
-        //             $icon = ($row->status) ? "ti-circle-x" : "ti-circle-check";
-        //             $color = ($row->status) ? "danger" : "success";
+                $btn = "<div class='d-flex justfiy-content-center'>
+                        <a href='" . route('perusahaan.edit', $row->id) . "' class='cursor-pointer mx-1 text-warning'>
+                            <i class='tf-icons ti ti-edit' ></i>
+                        </a>
+                    </div>";
 
-        //             $url = route('perusahaan.update-status', $row->light_house_id);
-
-        //             $btn = "<div class='d-flex justfiy-content-center'>
-        //                 <a href='" . route('perusahaan.edit', $row->light_house_id) . "' class='cursor-pointer mx-1 text-warning'>
-        //                     <i class='tf-icons ti ti-edit' ></i>
-        //                 </a>
-        //                 <a title='Activate' data-url='{$url}' data-function='afterUpdateStatus' class='update-status cursor-pointer mx-1  text-{$color}'>
-        //                     <i class='tf-icons ti {$icon}'></i>
-        //                 </a>
-        //             </div>";
-        //         } else {
-        //             $btn = "<i>No Permission</i>";
-        //         }
-
-        //         return $btn;
-        //     })
-        //     ->rawColumns(['status', 'action'])
-        //     ->make(true);
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
 
     public function create()
@@ -103,11 +77,12 @@ class PerusahaanController extends Controller
         return view('perusahaan.create', $data);
     }
 
-    public function store(LightHouseRequest $request)
+    public function store(Request $request)
     {
+        // dd($request->all());
         try {
             DB::beginTransaction();
-            $light_house = LightHouse::create($request->all());
+            Perusahaan::create($request->all());
             DB::commit();
             return Response::success(null, 'Data successfully created!');
         } catch (\Throwable $th) {
@@ -123,11 +98,11 @@ class PerusahaanController extends Controller
         return view('perusahaan.create', $data);
     }
 
-    public function update(LightHouseRequest $request, LightHouse $light_house)
+    public function update(Perusahaan $request, Perusahaan $perusahaan)
     {
         try {
             DB::beginTransaction();
-            $light_house->update($request->all());
+            // $perusahaan->update($request->all());
             DB::commit();
             return Response::success(null, 'Data successfully updated!');
         } catch (\Throwable $th) {

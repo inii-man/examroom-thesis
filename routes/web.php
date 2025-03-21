@@ -72,20 +72,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('perusahaan', PerusahaanController::class)->except(['show']);
 
     // kompetensi
-    Route::get('/kompetensi/list', [KompetensiController::class, 'list'])->name('perusahaan.list');
-    Route::post('/kompetensi/{perusahaan}/update-status', [KompetensiController::class, 'update_status'])->name('perusahaan.update-status');
+    Route::get('/kompetensi/list', [KompetensiController::class, 'list'])->name('kompetensi.list');
+    Route::post('/kompetensi/{perusahaan}/update-status', [KompetensiController::class, 'update_status']);
     Route::get('/kompetensi/detail-kompetensi', [KompetensiController::class, 'detail_kompetensi']);
     Route::resource('kompetensi', KompetensiController::class)->except(['show']);
 
     // bank soal
-    Route::get('/bank-soal/list', [BankSoalController::class, 'list'])->name('perusahaan.list');
-    Route::post('/bank-soal/{perusahaan}/update-status', [BankSoalController::class, 'update_status'])->name('perusahaan.update-status');
+    Route::get('/bank-soal/list', [BankSoalController::class, 'list'])->name('bank-soal.list');
+    Route::post('/bank-soal/{perusahaan}/update-status', [BankSoalController::class, 'update_status']);
     Route::get('/bank-soal/detail-kompetensi', [BankSoalController::class, 'detail_kompetensi']);
     Route::resource('bank-soal', BankSoalController::class)->except(['show']);
 
     // konfigurasi perusahaan
-    Route::get('/konfigurasi-assesment/list', [KonfigurasiAssesmentController::class, 'list'])->name('perusahaan.list');
-    Route::post('/konfigurasi-assesment/{perusahaan}/update-status', [KonfigurasiAssesmentController::class, 'update_status'])->name('perusahaan.update-status');
+    Route::get('/konfigurasi-assesment/list', [KonfigurasiAssesmentController::class, 'list'])->name('konfigurasi-assesment.list');
+    Route::post('/konfigurasi-assesment/{perusahaan}/update-status', [KonfigurasiAssesmentController::class, 'update_status']);
     Route::get('/konfigurasi-assesment/detail-konfigurasi', [KonfigurasiAssesmentController::class, 'detail_konfigurasi']);
     Route::get('/konfigurasi-assesment/detail-assesment', [KonfigurasiAssesmentController::class, 'detail_assesment']);
     Route::get('/konfigurasi-assesment/detail-manajemen', [KonfigurasiAssesmentController::class, 'detail_manajemen']);

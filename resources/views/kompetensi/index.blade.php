@@ -95,19 +95,33 @@
         function datatables() {
             let dataTa = [{
                     id: 1,
-                    kode_kompetensi: 'GG1',
+                    kode_kompetensi: 'IT01',
                     nama_kompetensi: 'Good Governance',
-                    deskripsi: 'Deskripsi 1',
-                    jumlah_pertanyaan: '10',
+                    deskripsi: 'Pengetahuan, kemampuan dan keahlian terkait identiﬁkasi, penerapan, dan pengukuran.',
+                    jumlah_pertanyaan: '10 Soal',
                     status: '<span class="badge bg-label-success">Acive</span>',
                     action: `
                         <div class="d-flex align-items-center gap-2">
-                            <a href="/kompetensi/detail-kompetensi" class="btn btn-sm btn-icon btn-detail"><i class="ti ti-file-text"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-edit"><i class="ti ti-pencil"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-delete"><i class="ti ti-trash"></i></a>
+                            <a href="/kompetensi/detail-kompetensi" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
                         </div>
                         `
                 },
+                {
+                    id: 2,
+                    kode_kompetensi: 'IT02',
+                    nama_kompetensi: 'Good Governance',
+                    deskripsi: 'Pengetahuan, kemampuan dan keahlian terkait identiﬁkasi, penerapan, dan pengukuran.',
+                    jumlah_pertanyaan: '10 Soal',
+                    status: '<span class="badge bg-label-success">Acive</span>',
+                    action: `
+                        <div class="d-flex align-items-center gap-2">
+                            <a href="/kompetensi/detail-kompetensi" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
+                        </div>
+                        `}
             ];
             $(dataTableId).DataTable({
                 // ajax: routeList,
@@ -197,15 +211,6 @@
             });
         }
 
-        $('#modal-add').on('hide.bs.modal', function() {
-            $('#modal-add').find('input[name="_method"]').val("POST");
-            $('#modal-add').find('input[id="id"]').val(null);
-
-            $('#modal-add').find(".modal-title").html(AddTitle);
-            $('#modal-add').find('form').attr('action', routeStore);
-        });
-
-
         // Filter Function
 
         function filterData() {
@@ -232,5 +237,25 @@
             $('#modal-filter').offcanvas('hide');
             tooltip();
         });
+
+        // onclickmodal-button
+        $(document).on('click', '#modal-button', function(e) {
+            Swal.fire({
+        title: 'Data Berhasil Diinput !',
+        text: 'You clicked the button!',
+        icon: 'success',
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                        Karena aplikasi ini masih Semi - Prototipe dan belum terkoneksi ke database, data belum dapat ditampilkan pada datatable. Silahkan lanjutkan ke proses berikutnya.  
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
     </script>
 @endsection

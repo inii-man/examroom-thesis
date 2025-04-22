@@ -18,7 +18,7 @@
         border-radius: 5px;">
         <div class="card-header d-flex justify-content-between">
             <div>
-                <h4>Detail Exam</h4>
+                <h4>Informasi Asesmen</h4>
             </div>
             <div>
                 <button class="btn btn-outline-primary"><span class="tf-icons ti ti-download"></span>Download Recapitulation</button>
@@ -68,13 +68,13 @@
             <li class="nav-item">
                 <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
                     data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="true">
-                    Penilaian Individu
+                    Asessment Peserta
                 </button>
             </li>
             <li class="nav-item">
                 <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                     data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
-                    Penilaian Oleh Asesor
+                    Penilaian Asesor
                 </button>
             </li>
         </ul>
@@ -155,12 +155,12 @@
             let dataTa = [{
                 id: 1,
                 nama_assesment: 'Samuel Alfredo',
-                departemen: 'Selesai',
+                departemen: '<span class="badge bg-label-success">Selesai</span>',
                 action: `
                          <div class="d-flex align-items-center gap-2">
                             
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-edit"><i class="ti ti-pencil"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-delete"><i class="ti ti-trash"></i></a>
+                            <a href="javascript:void(0)" id="btn-download" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
+                            <a href="javascript:void(0)" id="btn-download1" class="btn btn-sm btn-icon btn-success"><i class="ti ti-download"></i></a>
                         </div>
                         `
             }, ];
@@ -172,8 +172,8 @@
                 action: `
                          <div class="d-flex align-items-center gap-2">
                             
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-edit"><i class="ti ti-pencil"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-delete"><i class="ti ti-trash"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-success"><i class="ti ti-download"></i></a>
                         </div>
                         `
             }, ];
@@ -313,14 +313,39 @@
                 }
             });
         }
+        $(document).on('click', '#btn-download', function(e) {
+            Swal.fire({
+       
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                       Button yang Anda klik merupakan Button Download untuk export Hasil Rekapitulasi Asesmen, Button akan aktif ketika Jawaban sudah terisi semua.
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
 
-        $('#modal-add').on('hide.bs.modal', function() {
-            $('#modal-add').find('input[name="_method"]').val("POST");
-            $('#modal-add').find('input[id="id"]').val(null);
-
-            $('#modal-add').find(".modal-title").html(AddTitle);
-            $('#modal-add').find('form').attr('action', routeStore);
-        });
+        $(document).on('click', '#btn-download1', function(e) {
+            Swal.fire({
+       
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                       Button yang Anda klik merupakan Button Download untuk export Hasil Jawaban Peserta Asesmen, Button akan aktif ketika Jawaban sudah terisi semua. 
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
 
 
         // Filter Function

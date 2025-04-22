@@ -18,6 +18,10 @@
                     class="tf-icons me-3 ti ti-plus"></i>Departemen</button>
         </div> --}}
     </div>
+    <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 20px 0; border-radius: 5px; display: flex; align-items: center;">  
+        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+        Saat ini aplikasi masih dalam tahap semi-prototipe. Data yang Anda Input tidak akan tersimpan karena belum terhubung ke database. Anda tetap dapat mencoba mengisi form dan menekan tombol "Simpan Data"
+    </div>  
     <div class="card" style="border: 0.5px solid; 
         border-radius: 5px;">
         <div class="card-header" style="border-bottom: 0.5px solid">
@@ -105,8 +109,15 @@
                                 placeholder="" />
                             <div class="invalid-feedback"></div>
                         </div>
+                        
                     </div>
+                    
                 </div>
+                
+            </div>
+            <div class="d-flex mt-3 justify-content-between">
+                <button class="btn btn-outline-success" data-bs-dismiss="modal">+ Data Assesment</button>
+                <button  id="modal-button" class="btn btn-primary">Simpan Data</button>
             </div>
         </div>
     </div>

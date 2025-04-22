@@ -18,6 +18,10 @@
                     class="tf-icons me-3 ti ti-plus"></i>Perusahaan</button> --}}
         </div>
     </div>
+    <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 20px 0; border-radius: 5px; display: flex; align-items: center;">  
+        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+        Ini merupakan Data Karyawan yang terhubung dengan Master Data Pengguna 
+    </div>  
     <div class="card" style="border: 0.5px solid; 
         border-radius: 5px;">
         <div class="card-datatable border-bottom table-responsive">
@@ -98,6 +102,7 @@
                 email: 'email',
                 role: 'role',
             }];
+            
             $(dataTableId).DataTable({
                 // ajax: routeList,
                 data: dataTa,
@@ -179,13 +184,24 @@
             });
         }
 
-        $('#modal-add').on('hide.bs.modal', function() {
-            $('#modal-add').find('input[name="_method"]').val("POST");
-            $('#modal-add').find('input[id="id"]').val(null);
-
-            $('#modal-add').find(".modal-title").html(AddTitle);
-            $('#modal-add').find('form').attr('action', routeStore);
-        });
+        $(document).on('click', '#modal-button', function(e) {
+            Swal.fire({
+        title: 'Data Berhasil Diinput !',
+        text: 'You clicked the button!',
+        icon: 'success',
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                        Karena aplikasi ini masih Semi - Prototipe dan belum terkoneksi ke database, data belum dapat ditampilkan pada datatable. Silahkan lanjutkan ke proses berikutnya.  
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
 
 
         // Filter Function

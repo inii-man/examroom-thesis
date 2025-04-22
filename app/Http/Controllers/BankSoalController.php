@@ -31,11 +31,14 @@ class BankSoalController extends Controller
 
     public function bank_soal_detail()
     {
-        $data = $this->createEditData();
-        $list = $this->list();
-        $data['active_menu'] = 'bank_soal_detail';
-        $data['list'] = $list;
-        return view('bank-soal.detail-bank-soal', $data);
+        $data['active_menu'] = 'bank_soal';
+        return view('bank-soal.detail', $data);
+    }
+
+    public function question_detail()
+    {
+        $data['active_menu'] = 'bank_soal';
+        return view('bank-soal.question', $data);
     }
 
     public function detail_departemen()

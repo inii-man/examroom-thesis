@@ -1,7 +1,7 @@
 <!doctype html>
 
 <html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact" dir="ltr"
-    data-theme="theme-default" data-assets-path="/assets/" data-template="vertical-menu-template-no-customizer"
+    data-theme="theme-default" data-assets-path="../../../../assets/" data-template="vertical-menu-template-no-customizer"
     data-style="light">
 
 <head>
@@ -21,36 +21,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="/assets/vendor/fonts/google-fonts.css"
+        href="../../../../assets/vendor/fonts/google-fonts.css"
         rel="stylesheet" />
 
     <!-- Icons -->
-    <link rel="stylesheet" href="/assets/vendor/fonts/fontawesome.css" />
-    <link rel="stylesheet" href="/assets/vendor/fonts/tabler-icons.css" />
-    <link rel="stylesheet" href="/assets/vendor/fonts/flag-icons.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/fonts/flag-icons.css" />
 
     <!-- Core CSS -->
 
-    <link rel="stylesheet" href="/assets/vendor/css/rtl/core.css" />
-    <link rel="stylesheet" href="/assets/vendor/css/rtl/theme-default.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/css/rtl/core.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/css/rtl/theme-default.css" />
 
-    <link rel="stylesheet" href="/assets/css/demo.css" />
+    <link rel="stylesheet" href="../../../../assets/css/demo.css" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="/assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/libs/node-waves/node-waves.css" />
 
-    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="/assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/libs/typeahead-js/typeahead.css" />
 
     @if(Route::currentRouteName() != 'login')
-    <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
-    <link rel="stylesheet" href="/assets/vendor/libs/swiper/swiper.css" />
-    <link rel="stylesheet" href="/assets/vendor/libs/select2/select2.css" />
-    <link rel="stylesheet" href="/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
-    <link rel="stylesheet" href="/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
-    <link rel="stylesheet" href="/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
-    <link rel="stylesheet" href="/assets/vendor/libs/sweetalert2/sweetalert2.css" />
-    <link rel="stylesheet" href="/assets/vendor/libs/flatpickr/flatpickr.css" />    
+    <link rel="stylesheet" href="../../../../assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/libs/swiper/swiper.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/libs/select2/select2.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/libs/sweetalert2/sweetalert2.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/libs/flatpickr/flatpickr.css" />    
     @endif
 
 
@@ -58,31 +58,31 @@
     {{-- Kalau mau tambah package disini --}}
 
     <!-- Page CSS -->
-    <link rel="stylesheet" href="/assets/vendor/css/pages/cards-advance.css" />
+    <link rel="stylesheet" href="../../../../assets/vendor/css/pages/cards-advance.css" />
 
     <!-- Helpers -->
-    <script src="/assets/vendor/js/helpers.js"></script>
+    <script src="../../../../assets/vendor/js/helpers.js"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
 
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="/assets/js/config.js"></script>
+    <script src="../../../../assets/js/config.js"></script>
     @yield('page-style')
     @yield('meta-header')
     <style>
         /* customized */
         .bg-menu-theme.menu-vertical .menu-item.active>.menu-link:not(.menu-toggle) {
-            /* background: {{ app_config('primary_color') }} !important; */
-            background: {{ app_config('primary_color') }} !important;
-            border: 1px solid {{ app_config('primary_color') }} !important;
+            /* background: #1d41d3 !important; */
+            background: #1d41d3 !important;
+            border: 1px solid #1d41d3 !important;
             box-shadow: 0 0.125rem 0.375rem {{ app_config('primary_color_shadow') }} !important;
         }
 
         .text-primary {
-            color: {{ app_config('primary_color') }} !important;
+            color: #1d41d3 !important;
         }
 
         .bg-primary {
-            background-color: {{ app_config('primary_color') }} !important;
+            background-color: #1d41d3 !important;
         }
 
         .bg-primary-shadow {
@@ -91,7 +91,7 @@
 
         .bg-label-primary {
             background-color: {{ app_config('primary_color_label') }} !important;
-            color: {{ app_config('primary_color') }} !important;
+            color: #1d41d3 !important;
         }
 
         .btn-primary.btn[class*=btn-]:not([class*=btn-label-]):not([class*=btn-outline-]):not([class*=btn-text-]):not(.btn-icon):not(:disabled):not(.disabled) {
@@ -99,23 +99,23 @@
         }
 
         .select2-container--default .select2-results__option--highlighted[aria-selected] {
-            background-color: {{ app_config('primary_color') }} !important;
+            background-color: #1d41d3 !important;
             color: #fff !important;
         }
 
         .select2-container--default .select2-results__option--highlighted:not([aria-selected=true]) {
             background-color: {{ app_config('primary_color_label') }} !important;
-            color: {{ app_config('primary_color') }} !important;
+            color: #1d41d3 !important;
         }
 
         .dropdown-item.active {
             background-color: {{ app_config('primary_color_label') }} !important;
         }
         .dropdown-item.active>span {
-            color: {{ app_config('primary_color') }} !important;
+            color: #1d41d3 !important;
         }
         .dropdown-item.active>i {
-            color: {{ app_config('primary_color') }} !important;
+            color: #1d41d3 !important;
         }
 
         .app-brand-logo.demo {
@@ -130,7 +130,7 @@
         }
         
         .form-control:focus:not([disabled]) {
-            border-color: {{ app_config('primary_color') }} !important;
+            border-color: #1d41d3 !important;
         }
        
         a:hover {
@@ -139,8 +139,8 @@
 
         /* nav-link.active */
         .nav-link {
-            color: {{ app_config('primary_color') }} !important;
-            border-color: {{ app_config('primary_color') }} !important;            
+            color: #1d41d3 !important;
+            border-color: #1d41d3 !important;            
         }
 
         .nav-link:hover {
@@ -151,21 +151,21 @@
         .nav-link.active {
             color: #ffffff !important;
             box-shadow: 0 0.125rem 0.375rem {{ app_config('primary_color_shadow') }} !important;
-            background-color: {{ app_config('primary_color') }} !important;
+            background-color: #1d41d3 !important;
 
         }
         
         /* GENERATED BY BOOTSTRAP 5 COLOR THEME GENERATOR */
         /* https://bootstrapcolors.com */
         .btn-outline-primary {
-            color: {{ app_config('primary_color') }} !important;
-            border-color: {{ app_config('primary_color') }} !important;
+            color: #1d41d3 !important;
+            border-color: #1d41d3 !important;
         }
 
         .btn-outline-primary:hover {
             color: #fff !important;
-            background-color: {{ app_config('primary_color') }} !important;
-            border-color: {{ app_config('primary_color') }} !important;
+            background-color: #1d41d3 !important;
+            border-color: #1d41d3 !important;
         }
 
         .form-check-input:focus+.btn-outline-primary,
@@ -174,8 +174,8 @@
         }
 
         .form-check-input:checked {
-            background-color: {{ app_config('primary_color') }} !important;
-            border-color: {{ app_config('primary_color') }} !important;
+            background-color: #1d41d3 !important;
+            border-color: #1d41d3 !important;
             box-shadow: {{ app_config('primary_color_shadow') }} !important;
         }
 
@@ -185,8 +185,8 @@
         .btn-outline-primary.active,
         .btn-outline-primary.dropdown-toggle.show {
             color: #fff;
-            background-color: {{ app_config('primary_color') }} !important;
-            border-color: {{ app_config('primary_color') }} !important;
+            background-color: #1d41d3 !important;
+            border-color: #1d41d3 !important;
         }
 
         .form-check-input:checked+.btn-outline-primary:focus,
@@ -199,12 +199,12 @@
 
         .btn-outline-primary:disabled,
         .btn-outline-primary.disabled {
-            color: {{ app_config('primary_color') }} !important;
+            color: #1d41d3 !important;
             background-color: transparent;
         }
 
         .alert-primary {
-            color: {{ app_config('primary_color') }} !important;
+            color: #1d41d3 !important;
             background-color: {{ app_config('primary_color_label') }} !important;
             border-color: {{ app_config('primary_color_label') }} !important;
         }
@@ -214,43 +214,43 @@
         }
 
         .bg-primary {
-            background-color: {{ app_config('primary_color') }} !important !important;
+            background-color: #1d41d3 !important !important;
         }
 
         .text-primary {
-            color: {{ app_config('primary_color') }} !important !important;
+            color: #1d41d3 !important !important;
         }
 
         .border-primary {
-            border-color: {{ app_config('primary_color') }} !important !important;
+            border-color: #1d41d3 !important !important;
         }
 
         .link-primary {
-            color: {{ app_config('primary_color') }} !important;
+            color: #1d41d3 !important;
         }
 
         .link-primary:hover,
         .link-primary:focus {
-            color: {{ app_config('primary_color') }} !important;
+            color: #1d41d3 !important;
         }
 
         .btn-primary {
             color: #ffffff;
-            background-color: {{ app_config('primary_color') }} !important;
-            border-color: {{ app_config('primary_color') }} !important;
+            background-color: #1d41d3 !important;
+            border-color: #1d41d3 !important;
         }
 
         .btn-primary:hover {
             color: #ffffff;
             background-color: {{ app_config('primary_color_hover') }} !important;
-            border-color: {{ app_config('primary_color') }} !important;
+            border-color: #1d41d3 !important;
         }
 
         .form-check-input:focus+.btn-primary,
         .btn-primary:focus {
             color: #ffffff;
             background-color: {{ app_config('primary_color_hover') }} !important;
-            border-color: {{ app_config('primary_color') }} !important;
+            border-color: #1d41d3 !important;
             box-shadow: 0 0.125rem 0.375rem 0 {{ app_config('primary_color_shadow') }};
         }
 
@@ -260,8 +260,8 @@
         .btn-primary.active,
         .show>.btn-primary.dropdown-toggle {
             color: #ffffff;
-            background-color: {{ app_config('primary_color') }} !important;
-            border-color: {{ app_config('primary_color') }} !important;
+            background-color: #1d41d3 !important;
+            border-color: #1d41d3 !important;
         }
 
         .form-check-input:checked+.btn-primary:focus,
@@ -275,8 +275,8 @@
         .btn-primary:disabled,
         .btn-primary.disabled {
             color: #ffffff;
-            background-color: {{ app_config('primary_color') }} !important;
-            border-color: {{ app_config('primary_color') }} !important;
+            background-color: #1d41d3 !important;
+            border-color: #1d41d3 !important;
         }
 
         .layout-navbar.navbar-detached {
@@ -340,36 +340,36 @@
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
 
-    <script src="/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="/assets/vendor/libs/popper/popper.js"></script>
-    <script src="/assets/vendor/js/bootstrap.js"></script>
-    <script src="/assets/vendor/libs/node-waves/node-waves.js"></script>
-    <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="/assets/vendor/libs/hammer/hammer.js"></script>
-    <script src="/assets/vendor/libs/i18n/i18n.js"></script>
-    <script src="/assets/vendor/libs/typeahead-js/typeahead.js"></script>
-    <script src="/assets/vendor/js/menu.js"></script>
+    <script src="../../../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../../../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../../../assets/vendor/js/bootstrap.js"></script>
+    <script src="../../../../assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="../../../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../../../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="../../../../assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="../../../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../../../assets/vendor/js/menu.js"></script>
 
     <!-- endbuild -->
 
     <!-- Vendors JS -->
     @if(Route::currentRouteName() != 'login')
-    <script src="/assets/vendor/libs/apex-charts/apexcharts.js"></script>
-    <script src="/assets/vendor/libs/swiper/swiper.js"></script>
-    <script src="/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-    <script src="/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
-    <script src="/assets/vendor/libs/select2/select2.js"></script>
-    <script src="/assets/vendor/libs/block-ui/block-ui.js"></script>
-    <script src="/assets/vendor/libs/jquery-repeater/jquery-repeater.js"></script>
-    <script src="/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+    <script src="../../../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="../../../../assets/vendor/libs/swiper/swiper.js"></script>
+    <script src="../../../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    <script src="../../../../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+    <script src="../../../../assets/vendor/libs/select2/select2.js"></script>
+    <script src="../../../../assets/vendor/libs/block-ui/block-ui.js"></script>
+    <script src="../../../../assets/vendor/libs/jquery-repeater/jquery-repeater.js"></script>
+    <script src="../../../../assets/vendor/libs/flatpickr/flatpickr.js"></script>
     @endif
 
     <!-- Main JS -->
-    <script src="/assets/js/main.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
     <script src="/js/content.js"></script>
 
     <!-- Page JS -->
-    <script src="/assets/js/dashboards-analytics.js"></script>
+    <script src="../../../../assets/js/dashboards-analytics.js"></script>
 
     <!-- Additional Vendors JS -->
     {{-- Kalau mau tambah package disini --}}

@@ -11,12 +11,12 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-md-10 col-12">
-            <h4 class="fw-bold mb-0"><span class="text-muted fw-light">Kompetensi /</span> Data Pertanyaan Good Governance
+            <h4 class="fw-bold mb-0"><span class="text-muted fw-light">Data Kompetensi /</span> Data Pertanyaan Good Governance
             </h4>
         </div>
         <div class="col-md-2 col-12 text-end">
-            <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modal-add"><i
-                    class="tf-icons me-3 ti ti-plus"></i>Pertanyaan</button>
+            {{-- <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modal-add"><i
+                    class="tf-icons me-3 ti ti-plus"></i>Pertanyaan</button> --}}
         </div>
     </div>
     <div class="card" style="border: 0.5px solid; 
@@ -29,7 +29,7 @@
                         <th>Pertanyaan</th>
                         <th>Level Pertanyaan</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        {{-- <th>Actions</th> --}}
                     </tr>
                 </thead>
                 {{-- <tbody>
@@ -97,12 +97,12 @@
                 pertanyaan: 'Apakah Anda mampu menjelaskan prinsip-prinsip, pedoman pelaksanaan dan infrastruktur Tata Kelola yang baik?',
                 level_pertanyaan: '1',
                 status: '<span class="badge bg-label-success">Active</span>',
-                action: `
-                        <div class="d-flex align-items-center gap-2">
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
-                        </div>
-                        `
+                // action: `
+                //         <div class="d-flex align-items-center gap-2">
+                //             <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
+                //             <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
+                //         </div>
+                //         `
             }, ];
             $(dataTableId).DataTable({
                 // ajax: routeList,
@@ -123,9 +123,9 @@
                     {
                         data: 'status'
                     },
-                    {
-                        data: 'action'
-                    },
+                    // {
+                    //     data: 'action'
+                    // },
                 ],
                 dom: '<"row"' +
                     '<"col-md-2"<"ms-n2"l>>' +

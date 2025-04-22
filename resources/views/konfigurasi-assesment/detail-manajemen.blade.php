@@ -18,7 +18,7 @@
         border-radius: 5px;">
         <div class="card-header d-flex justify-content-between">
             <div>
-                <h4>Detail Exam</h4>
+                <h4>Informasi Asesmen</h4>
             </div>
             <div>
                 <button class="btn btn-outline-primary"><span class="tf-icons ti ti-download"></span>Download Recapitulation</button>
@@ -162,8 +162,8 @@
                 action: `
                          <div class="d-flex align-items-center gap-2">
                             
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-edit"><i class="ti ti-pencil"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-delete"><i class="ti ti-trash"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
                         </div>
                         `
             }, ];
@@ -174,8 +174,8 @@
                 action: `
                          <div class="d-flex align-items-center gap-2">
                             
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-edit"><i class="ti ti-pencil"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-delete"><i class="ti ti-trash"></i></a>
+                            <a href="javascript:void(0)" id="btn-delete" class="btn btn-sm btn-icon btn-danger"><i class="ti ti-trash"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-mail"></i></a>
                         </div>
                         `
             }, ];
@@ -224,7 +224,7 @@
                 buttons: [
                     @if (auth()->user()->hasPermissionTo($managePermission))
                         {
-                            text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Course</span>',
+                            text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Kompetensi di Asesme</span>',
                             className: 'add-new btn btn-primary ms-4 waves-effect waves-light',
                             attr: {
                                 'data-bs-toggle': 'modal',
@@ -319,13 +319,21 @@
             });
         }
 
-        $('#modal-add').on('hide.bs.modal', function() {
-            $('#modal-add').find('input[name="_method"]').val("POST");
-            $('#modal-add').find('input[id="id"]').val(null);
-
-            $('#modal-add').find(".modal-title").html(AddTitle);
-            $('#modal-add').find('form').attr('action', routeStore);
-        });
+        $(document).on('click', '#btn-delete', function(e) {
+            Swal.fire({
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                       Button yang Anda klik merupakan Button Hapus untuk Menghapus Peserta Asesmen,
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
 
 
         // Filter Function
@@ -356,3 +364,5 @@
         });
     </script>
 @endsection
+
+

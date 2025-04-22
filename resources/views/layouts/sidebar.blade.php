@@ -1,8 +1,8 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="background-color: #FAFDFF !important;">
     <div class="app-brand demo">
         <a href="{{ url('/') }}" class="app-brand-link">
             <span class="app-brand-logo demo" style="height: 40px;">
-                <img src="{{ app_config('sidebar_logo') }}" class="img-fluid" alt="Sidebar Logo" style="height: 40px;">
+                <img src="../../../{{ app_config('sidebar_logo') }}" class="img-fluid" alt="Sidebar Logo" style="height: 40px;">
             </span>
             <span class="app-brand-text demo menu-text fw-bold">{{ app_config('sidebar_name') }}</span>
         </a>
@@ -19,12 +19,12 @@
         {{-- Dashboard --}}
         @if (isMenuHeaderVisible())
             <li class="menu-header small">
-                <span class="menu-header-text" data-i18n="Dashboard">Dashboard</span>
+                <span class="menu-header-text" data-i18n="Pre-Assessment">Pre-Assessment</span>
             </li>
             <li class="menu-item {{ isActiveMenuItem('home') }}">
                 <a href="/home" class="menu-link">
                     <i class="menu-icon ti ti-book"></i>
-                    <div data-i18n="Batch Kelas">Batch Kelas</div>
+                    <div data-i18n="Pengelolaan Asesmen">Pengelolaan Asesmen</div>
                 </a>
             </li>
             <li class="menu-item {{ isActiveMenuItem('bank-soal') }}">

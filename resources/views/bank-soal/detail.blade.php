@@ -11,13 +11,12 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-md-10 col-12">
-            <h4 class="fw-bold mb-0"><span class="text-muted fw-light">Kompetensi /</span> Data Pertanyaan Good Governance
-            </h4>
+            <h4 class="fw-bold mb-0"><span class="text-muted fw-light">Bank Soal</span> / Data Kompetensi</h4>
         </div>
-        <div class="col-md-2 col-12 text-end">
+        {{-- <div class="col-md-2 col-12 text-end">
             <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modal-add"><i
-                    class="tf-icons me-3 ti ti-plus"></i>Pertanyaan</button>
-        </div>
+                    class="tf-icons me-3 ti ti-plus"></i>Kompetensi</button>
+        </div> --}}
     </div>
     <div class="card" style="border: 0.5px solid; 
         border-radius: 5px;">
@@ -26,10 +25,12 @@
                 <thead class="border-top">
                     <tr>
                         <th>No</th>
-                        <th>Pertanyaan</th>
-                        <th>Level Pertanyaan</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th>Kode Kompetensi</th>
+                        <th>Nama Kompetensi</th>
+                        <th>Deskripsi</th>
+                        <th>Jumlah Pertanyaan</th>
+                        <th>status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 {{-- <tbody>
@@ -51,7 +52,7 @@
             </table>
         </div>
     </div>
-    @include('kompetensi.modal-pertanyaan')
+    @include('kompetensi.modal')
 @endsection
 
 @section('page-js')
@@ -67,7 +68,7 @@
         const dataTableId = "#ships-table";
         const AddTitle = "Add Ship";
         const EditTitle = "Edit Ship";
-        const searchPlaceholder = "Search Departemen";
+        const searchPlaceholder = "Search";
         const addButtonTitle = "Ships";
         //Change above const value for faster development
 
@@ -93,17 +94,33 @@
 
         function datatables() {
             let dataTa = [{
-                id: 1,
-                pertanyaan: 'Apakah Anda mampu menjelaskan prinsip-prinsip, pedoman pelaksanaan dan infrastruktur Tata Kelola yang baik?',
-                level_pertanyaan: '1',
-                status: '<span class="badge bg-label-success">Active</span>',
-                action: `
+                    id: 1,
+                    kode_kompetensi: 'IT01',
+                    nama_kompetensi: 'Good Governance',
+                    deskripsi: 'Pengetahuan, kemampuan dan keahlian terkait identiﬁkasi, penerapan, dan pengukuran.',
+                    jumlah_pertanyaan: '10 Soal',
+                    status: '<span class="badge bg-label-success">Acive</span>',
+                    action: `
                         <div class="d-flex align-items-center gap-2">
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
+                            <a href="/bank-soal/question_detail" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
+                            
                         </div>
                         `
-            }, ];
+                },
+                {
+                    id: 2,
+                    kode_kompetensi: 'IT02',
+                    nama_kompetensi: 'Good Governance',
+                    deskripsi: 'Pengetahuan, kemampuan dan keahlian terkait identiﬁkasi, penerapan, dan pengukuran.',
+                    jumlah_pertanyaan: '10 Soal',
+                    status: '<span class="badge bg-label-success">Acive</span>',
+                    action: `
+                        <div class="d-flex align-items-center gap-2">
+                            <a href="/bank-soal/question_detail" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
+                            
+                        </div>
+                        `}
+            ];
             $(dataTableId).DataTable({
                 // ajax: routeList,
                 data: dataTa,
@@ -112,16 +129,23 @@
                 destroy: true,
                 scrollX: true,
                 columns: [{
-                        data: 'id'
+                        data: 'id',
                     },
                     {
-                        data: 'pertanyaan'
+                        data: 'kode_kompetensi'
                     },
                     {
-                        data: 'level_pertanyaan'
+                        data: 'nama_kompetensi'
                     },
                     {
-                        data: 'status'
+                        data: 'deskripsi'
+                    },
+                    {
+                        data: 'jumlah_pertanyaan'
+                    },
+                    {
+                        data: 'status',
+                        
                     },
                     {
                         data: 'action'
@@ -185,25 +209,6 @@
             });
         }
 
-        $(document).on('click', '#modal-button', function(e) {
-            Swal.fire({
-        title: 'Data Berhasil Diinput !',
-        text: 'You clicked the button!',
-        icon: 'success',
-        html:
-          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
-                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
-                        Karena aplikasi ini masih Semi - Prototipe dan belum terkoneksi ke database, data belum dapat ditampilkan pada datatable. Silahkan lanjutkan ke proses berikutnya.  
-                    </div>  
-                    `,
-        customClass: {
-          confirmButton: 'btn btn-primary waves-effect waves-light'
-        },
-        confirmButtonText: 'Ok, Saya Mengerti',
-        buttonsStyling: false
-      });
-            })
-
         // Filter Function
 
         function filterData() {
@@ -230,5 +235,25 @@
             $('#modal-filter').offcanvas('hide');
             tooltip();
         });
+
+        // onclickmodal-button
+        $(document).on('click', '#modal-button', function(e) {
+            Swal.fire({
+        title: 'Data Berhasil Diinput !',
+        text: 'You clicked the button!',
+        icon: 'success',
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                        Karena aplikasi ini masih Semi - Prototipe dan belum terkoneksi ke database, data belum dapat ditampilkan pada datatable. Silahkan lanjutkan ke proses berikutnya.  
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
     </script>
 @endsection

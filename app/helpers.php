@@ -100,7 +100,7 @@ if (!function_exists('app_config')) {
             'sidebar_logo' => '/assets/svg/icons/vuexy-sidebar.svg',
             'login_bg' => '/assets/img/backgrounds/techno.png',
             'login_bg_style' => 'height: auto; width: 100%;',
-            'primary_hex' => '#7367f0',
+            'primary_hex' => '#1d41d3',
             'show_dummy' => "true",
         ];
         $stored_config = App\Models\Config::all()->pluck('config_value', 'config_name');

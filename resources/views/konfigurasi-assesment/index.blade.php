@@ -11,7 +11,7 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-md-9 col-12">
-            <h4 class="fw-bold mb-0">Konfigurasi Assesment</h4>
+            <h4 class="fw-bold mb-0">Pengelolaan Assesment</h4>
         </div>
         <div class="col-md-3 col-12 text-end">
             {{-- <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modal-add"><i
@@ -127,10 +127,9 @@
                 status: '<span class="badge bg-label-success">Active</span>',
                 action: `
                          <div class="d-flex align-items-center gap-2">
-                            <a href="/konfigurasi-assesment/detail-assesment" class="btn btn-sm btn-icon btn-detail"><i class="ti ti-file-text"></i></a>
-                            <a href="/konfigurasi-assesment/detail-manajemen" class="btn btn-sm btn-icon btn-manage"><i class="ti ti-settings"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-edit"><i class="ti ti-pencil"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-delete"><i class="ti ti-trash"></i></a>
+                            <a href="/konfigurasi-assesment/detail-assesment" class="btn btn-sm btn-icon btn-info"><i class="ti ti-settings"></i></a>
+                            <a href="/konfigurasi-assesment/detail-manajemen" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
                         </div>
                         `
             }, ];

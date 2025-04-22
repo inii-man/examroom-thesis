@@ -80,7 +80,8 @@ Route::group(['middleware' => ['auth']], function () {
     // bank soal
     Route::get('/bank-soal/list', [BankSoalController::class, 'list'])->name('bank-soal.list');
     Route::post('/bank-soal/{perusahaan}/update-status', [BankSoalController::class, 'update_status']);
-    Route::get('/bank-soal/detail-kompetensi', [BankSoalController::class, 'detail_kompetensi']);
+    Route::get('/bank-soal/bank_soal_detail', [BankSoalController::class, 'bank_soal_detail']);
+    Route::get('/bank-soal/question_detail', [BankSoalController::class, 'question_detail']);
     Route::resource('bank-soal', BankSoalController::class)->except(['show']);
 
     // konfigurasi perusahaan

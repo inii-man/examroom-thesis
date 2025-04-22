@@ -25,13 +25,13 @@
             <table class="table" id="users-table">
                 <thead class="border-top">
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th>Name</th>
+                        <th>No</th>
+                        <th>Nama Pengguna</th>
+                        <th>Perusahaan</th>
                         <th>Email</th>
                         <th>Role</th>
-                        <th>Status</th>
-                        <th class="text-center">Actions</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
             </table>
@@ -81,49 +81,33 @@
         function datatables() {
             let dataTa = [{
                     id: 1,
-                    profile_pic: '<div class="avatar me-2"><img src="/assets/img/avatars/1.png" alt="Avatar" class="w-px-40 h-auto rounded-circle"></div>',
                     name: 'John Doe',
-                    email: '2a5m9@example.com',
+                    company: 'PT. A',
+                    email: 'i7u0I@example.com',
                     role: 'Admin',
-                    status: '<span class="badge bg-label-success">Active</span>',
-                    action: '<div class="dropdown">' +
-                        '<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">' +
-                        '<i class="ti ti-dots-vertical"></i>' +
-                        '</button>' +
-                        '<div class="dropdown-menu dropdown-menu-end">' +
-                        '<a class="dropdown-item" href="javascript:void(0);">' +
-                        '<i class="ti ti-edit me-2"></i>' +
-                        'Edit' +
-                        '</a>' +
-                        '<a class="dropdown-item" href="javascript:void(0);">' +
-                        '<i class="ti ti-trash me-2"></i>' +
-                        'Delete' +
-                        '</a>' +
-                        '</div>' +
-                        '</div>'
+                    status: 'Active',
+                    action: `
+                        <div class="d-flex align-items-center gap-2">
+                            <a  class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
+                            <a href="javascript:void(0)" class="nonaktif btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-info"><i class="ti ti-repeat"></i></a>
+                        </div>
+                        `
                 },
                 {
                     id: 2,
-                    profile_pic: '<div class="avatar me-2"><img src="/assets/img/avatars/1.png" alt="Avatar" class="w-px-40 h-auto rounded-circle"></div>',
                     name: 'John Doe',
-                    email: '2a5m9@example.com',
+                    company: 'PT. A',
+                    email: 'i7u0I@example.com',
                     role: 'Admin',
-                    status: '<span class="badge bg-label-success">Active</span>',
-                    action: '<div class="dropdown">' +
-                        '<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">' +
-                        '<i class="ti ti-dots-vertical"></i>' +
-                        '</button>' +
-                        '<div class="dropdown-menu dropdown-menu-end">' +
-                        '<a class="dropdown-item" href="javascript:void(0);">' +
-                        '<i class="ti ti-edit me-2"></i>' +
-                        'Edit' +
-                        '</a>' +
-                        '<a class="dropdown-item" href="javascript:void(0);">' +
-                        '<i class="ti ti-trash me-2"></i>' +
-                        'Delete' +
-                        '</a>' +
-                        '</div>' +
-                        '</div>'
+                    status: 'Active',
+                    action: `
+                        <div class="d-flex align-items-center gap-2">
+                            <a  class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
+                            <a href="javascript:void(0)" class="nonaktif btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-info"><i class="ti ti-repeat"></i></a>
+                        </div>
+                        `
                 },
             ];
             $(dataTableId).DataTable({
@@ -137,10 +121,10 @@
                         data: 'id'
                     },
                     {
-                        data: 'profile_pic'
+                        data: 'name'
                     },
                     {
-                        data: 'name'
+                        data: 'company'
                     },
                     {
                         data: 'email'
@@ -365,13 +349,44 @@
             });
         }
 
-        $('#modal-add').on('hide.bs.modal', function() {
-            $('#modal-add').find('input[name="_method"]').val("POST");
-            $('#modal-add').find('input[id="id"]').val(null);
+        // onclickmodal-button
+        $(document).on('click', '#modal-button', function(e) {
+            Swal.fire({
+        title: 'Data Berhasil Diinput !',
+        text: 'You clicked the button!',
+        icon: 'success',
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                        Karena aplikasi ini masih Semi - Prototipe dan belum terkoneksi ke database, data belum dapat ditampilkan pada datatable. Silahkan lanjutkan ke proses berikutnya.  
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
 
-            $('#modal-add').find(".modal-title").html(AddTitle);
-            $('#modal-add').find('form').attr('action', routeStore);
-        });
+            $(document).on('click', '.nonaktif', function(e) {
+            Swal.fire({
+        title: 'Apakah Anda Yakin ingin Non-Aktifkan Data?',
+        text: 'You clicked the button!',
+        icon: 'warning',
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                        Ini hanya simulasi. Data tidak benar-benar dinonaktifkan karena aplikasi masih dalam tahap semi-prototipe.  
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
 
 
         // Filter Function

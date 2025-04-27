@@ -11,7 +11,7 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-md-10 col-12">
-            <h4 class="fw-bold mb-0">Konfigurasi Asesmen / ABC / Detail Asesmen</h4>
+            <h4 class="fw-bold mb-0">Pengelolaan Assesment / ABC / Konfigurasi Asesmen</h4>
         </div>
     </div>
     <div class="card" style="border: 0.5px solid; 
@@ -21,7 +21,7 @@
                 <h4>Informasi Asesmen</h4>
             </div>
             <div>
-                <button class="btn btn-outline-primary"><span class="tf-icons ti ti-download"></span>Download Recapitulation</button>
+                <button  id="btn-download" class="btn btn-outline-primary"><span class="tf-icons ti ti-download"></span>Download Recapitulation</button>
             </div>
         </div>
         <div class="card-body mt-5 row">
@@ -109,6 +109,8 @@
                 </div>
             </div>
         </div>
+        @include('konfigurasi-assesment.modal_assesment')
+        @include('konfigurasi-assesment.modal_assesment2')
 
     </div>
 @endsection
@@ -159,8 +161,8 @@
                 action: `
                          <div class="d-flex align-items-center gap-2">
                             
-                            <a href="javascript:void(0)" id="btn-download" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
-                            <a href="javascript:void(0)" id="btn-download1" class="btn btn-sm btn-icon btn-success"><i class="ti ti-download"></i></a>
+                            <a data-bs-toggle="modal" data-bs-target="#modal-assesment" href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
+                            <a href="javascript:void(0)"class="btn-download1 btn btn-sm btn-icon btn-success"><i class="ti ti-download"></i></a>
                         </div>
                         `
             }, ];
@@ -172,8 +174,8 @@
                 action: `
                          <div class="d-flex align-items-center gap-2">
                             
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-success"><i class="ti ti-download"></i></a>
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modal-assesment1" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-download1 btn-sm btn-icon btn-success"><i class="ti ti-download"></i></a>
                         </div>
                         `
             }, ];
@@ -330,13 +332,34 @@
       });
             })
 
-        $(document).on('click', '#btn-download1', function(e) {
+        $(document).on('click', '.btn-download1', function(e) {
             Swal.fire({
        
         html:
           ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
                         <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
                        Button yang Anda klik merupakan Button Download untuk export Hasil Jawaban Peserta Asesmen, Button akan aktif ketika Jawaban sudah terisi semua. 
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
+
+
+            
+
+
+            $(document).on('click', '#button-check', function(e) {
+            Swal.fire({
+       
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                       Button yang Anda klik merupakan Button Persetujuan untuk Memvalidasi Jawaban Asesi, 
                     </div>  
                     `,
         customClass: {

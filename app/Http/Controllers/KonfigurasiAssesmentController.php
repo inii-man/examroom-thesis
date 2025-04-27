@@ -29,6 +29,14 @@ class KonfigurasiAssesmentController extends Controller
         return view('konfigurasi-assesment.index', $data);
     }
 
+    public function monitoring()
+    {
+        $data = $this->createEditData();
+        $list = $this->list();
+        $data['list'] = $list;
+        return view('konfigurasi-assesment.monitoring', $data);
+    }
+
     public function detail_konfigurasi()
     {
         $data = $this->createEditData();

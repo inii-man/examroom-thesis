@@ -287,7 +287,7 @@
     </style>
 </head>
 
-<body>
+<body style="background-color:#fff !important">
     {{-- if page login --}}
     @if(Route::currentRouteName() == 'login')
         @yield('content')

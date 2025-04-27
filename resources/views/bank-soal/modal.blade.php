@@ -16,30 +16,40 @@
                         Saat ini aplikasi masih dalam tahap semi-prototype. Data yang Anda input tidak akan tersimpan karena belum terhubung ke database. Anda dapat tetap mengisi form dan menekan tombol "Simpan Data".  
                     </div>  
                     <div class="col-12 mb-3 form-group">
-                        <label for="ship_name" class="form-label">Nama Bank Soal</label>
-                        <input type="text" id="ship_name" name="ship_name" class="form-control"
+                        <label for="bank_soal_name" class="form-label">Nama Bank Soal</label>
+                        <input type="text" id="bank_soal_name" name="bank_soal_name" class="form-control"
                             placeholder="Nama Bank Soal" />
                         <div class="invalid-feedback"></div>
                     </div>
-                    <div class="row mx-1" style="border: 0.5px solid; border-radius: 5px; padding: 10px">
-                        <div class="col-8 mb-3 form-group">
-                            <label for="ship_name" class="form-label">Nama Kompetensi</label>
-                            <select name="" class="select2 form-control" data-placeholder="Nama Kompetensi" id="">
-                                <option value="" disabled selected></option>
-                            </select>
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="col-4 mb-3 form-group">
-                            <label for="ship_type" class="form-label">Jumlah Pertanyaan</label>
-                            <input type="text" id="ship_type" name="" class="form-control"
-                                placeholder="25 Pertanyaan" disabled />
-                            <div class="invalid-feedback"></div>
+                    
+                    <!-- Repeater container -->
+                    <div id="bank-soal-repeater">
+                        <!-- Repeatable section -->
+                        <div class="repeater-item mb-3">
+                            <div class="row mx-1" style="border: 0.5px solid; border-radius: 5px; padding: 10px">
+                                <div class="col-8 mb-3 form-group">
+                                    <label for="kompetensi_name" class="form-label">Nama Kompetensi</label>
+                                    <select name="kompetensi_name" class=" form-control" data-placeholder="Nama Kompetensi">
+                                        <option value="" disabled selected></option>
+                                        <option value="1">Kompetensi 1</option>
+                                        <option value="2">Kompetensi 2</option>
+                                    </select>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="col-4 mb-3 form-group">
+                                    <label for="jumlah_pertanyaan" class="form-label">Jumlah Pertanyaan</label>
+                                    <input type="text" name="jumlah_pertanyaan" class="form-control"
+                                        placeholder="25 Pertanyaan" disabled />
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-danger btn-sm remove-repeater-item mt-2">Hapus</button>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between modal-footer">
-                    <button class="btn btn-outline-success" data-bs-dismiss="modal">+ Data Bank Soal</button>
-                    <button  id="modal-button" class="btn btn-primary">Simpan Data</button>
+                    <button type="button" class="btn btn-outline-success" id="add-bank-soal">+ Data Bank Soal</button>
+                    <button type="button" id="modal-button" class="btn btn-primary">Simpan Data</button>
                 </div>
         </div>
     </div>

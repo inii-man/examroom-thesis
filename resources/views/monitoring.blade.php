@@ -69,7 +69,7 @@
                 columns: [{
                         data: 'card',
                         render: function(data, type, row) {
-                            return `<a class="card" href="/konfigurasi-assesment">
+                            return `<a class="card" href="/konfigurasi-assesment-monitoring">
                                         <div class="card-body d-flex justify-content-between align-items-center">
                                             <img class="" width="80" src="${data}" />
                                             <div>

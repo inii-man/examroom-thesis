@@ -78,6 +78,13 @@
             @endif
         @endif
 
+        <li class="menu-item {{ isActiveMenuItem('monitoring') }}">
+            <a href="/monitoring" class="menu-link">
+                <i class="menu-icon ti ti-notebook"></i>
+                <div data-i18n="Monitoring Asesmen">Monitoring Asesmen</div>
+            </a>
+        </li>
+
         {{-- Configuration --}}
         @if (isMenuHeaderVisible())
             <li class="menu-header small">

@@ -16,8 +16,8 @@
         <div class="col-md-3 col-12 text-end">
             {{-- <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modal-add"><i
                     class="tf-icons me-3 ti ti-plus"></i>Data Assesment</button> --}}
-            <a href="/konfigurasi-assesment/detail-konfigurasi" class="btn btn-primary"><i
-                class="tf-icons me-3 ti ti-plus"></i>Tambah Assesment</a>
+            {{-- <a href="/konfigurasi-assesment/detail-konfigurasi" class="btn btn-primary"><i
+                class="tf-icons me-3 ti ti-plus"></i>Tambah Assesment</a> --}}
         </div>
     </div>
     <div class="card" style="border: 0.5px solid; 
@@ -127,9 +127,7 @@
                 status: '<span class="badge bg-label-success">Active</span>',
                 action: `
                          <div class="d-flex align-items-center gap-2">
-                            <a href="/konfigurasi-assesment/detail-manajemen" class="btn btn-sm btn-icon btn-info"><i class="ti ti-settings"></i></a>
-                            <a href="#" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
+                            <a href="/konfigurasi-assesment/detail-assesment" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
                         </div>
                         `
             }, ];

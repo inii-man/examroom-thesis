@@ -11,7 +11,7 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-md-10 col-12">
-            <h4 class="fw-bold mb-0">Konfigurasi Asesmen / ABC / Manajemen Asesmen</h4>
+            <h4 class="fw-bold mb-0">Pengelolaan Asesmen / Konfigurasi Asesmen</h4>
         </div>
     </div>
     <div class="card" style="border: 0.5px solid; 
@@ -20,9 +20,9 @@
             <div>
                 <h4>Informasi Asesmen</h4>
             </div>
-            <div>
+            {{-- <div>
                 <button class="btn btn-outline-primary"><span class="tf-icons ti ti-download"></span>Download Recapitulation</button>
-            </div>
+            </div> --}}
         </div>
         <div class="card-body mt-5 row">
             <div class="col-md-4 col-12">
@@ -110,7 +110,10 @@
                 </div>
             </div>
         </div>
-
+    @include('konfigurasi-assesment.modal_manajemen')
+    @include('konfigurasi-assesment.modal_manajemen2')
+    @include('konfigurasi-assesment.modal_manajemen3')
+        
     </div>
 @endsection
 
@@ -162,7 +165,7 @@
                 action: `
                          <div class="d-flex align-items-center gap-2">
                             
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
+                            <a data-bs-toggle="modal" data-bs-target="#modal-add-kompetensi1" href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
                         </div>
                         `
@@ -175,7 +178,7 @@
                          <div class="d-flex align-items-center gap-2">
                             
                             <a href="javascript:void(0)" id="btn-delete" class="btn btn-sm btn-icon btn-danger"><i class="ti ti-trash"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-mail"></i></a>
+                            <a data-bs-toggle="modal" data-bs-target="#modal-add-kompetensi2"  href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-mail"></i></a>
                         </div>
                         `
             }, ];
@@ -224,11 +227,11 @@
                 buttons: [
                     @if (auth()->user()->hasPermissionTo($managePermission))
                         {
-                            text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Kompetensi di Asesme</span>',
+                            text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Kompetensi di Asesment</span>',
                             className: 'add-new btn btn-primary ms-4 waves-effect waves-light',
                             attr: {
                                 'data-bs-toggle': 'modal',
-                                'data-bs-target': '#modal-add'
+                                'data-bs-target': '#modal-add-kompetensi'
                             }
                         },
                         
@@ -362,6 +365,36 @@
             $('#modal-filter').offcanvas('hide');
             tooltip();
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const repeaterContainer = document.getElementById('kompetensi-repeater');
+    const addButton = document.getElementById('add-kompetensi');
+
+    function createRepeaterItem() {
+        const template = repeaterContainer.querySelector('.repeater-item');
+        const newItem = template.cloneNode(true);
+        
+        newItem.querySelectorAll('input, select').forEach(input => {
+            input.value = '';
+        });
+
+        newItem.querySelector('.remove-repeater-item').addEventListener('click', function() {
+            if (repeaterContainer.children.length > 1) {
+                newItem.remove();
+            }
+        });
+
+        repeaterContainer.appendChild(newItem);
+    }
+
+    addButton.addEventListener('click', createRepeaterItem);
+
+    repeaterContainer.querySelector('.remove-repeater-item').addEventListener('click', function(e) {
+        if (repeaterContainer.children.length > 1) {
+            e.target.closest('.repeater-item').remove();
+        }
+    });
+});
     </script>
 @endsection
 

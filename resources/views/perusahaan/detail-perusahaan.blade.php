@@ -200,6 +200,37 @@
             })
 
 
+            document.addEventListener('DOMContentLoaded', function() {
+    const repeaterContainer = document.getElementById('departemen-repeater');
+    const addButton = document.getElementById('add-departemen');
+
+    function createRepeaterItem() {
+        const template = repeaterContainer.querySelector('.repeater-item');
+        const newItem = template.cloneNode(true);
+        
+        newItem.querySelectorAll('input').forEach(input => {
+            input.value = '';
+        });
+
+        newItem.querySelector('.remove-repeater-item').addEventListener('click', function() {
+            if (repeaterContainer.children.length > 1) {
+                newItem.remove();
+            }
+        });
+
+        repeaterContainer.appendChild(newItem);
+    }
+
+    addButton.addEventListener('click', createRepeaterItem);
+
+    repeaterContainer.querySelector('.remove-repeater-item').addEventListener('click', function(e) {
+        if (repeaterContainer.children.length > 1) {
+            e.target.closest('.repeater-item').remove();
+        }
+    });
+});
+
+
         // Filter Function
 
         function filterData() {

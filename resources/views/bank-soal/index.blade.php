@@ -171,6 +171,39 @@
             });
         }
 
+        document.addEventListener('DOMContentLoaded', function() {
+    const repeaterContainer = document.getElementById('bank-soal-repeater');
+    const addButton = document.getElementById('add-bank-soal');
+
+    function createRepeaterItem() {
+        const template = repeaterContainer.querySelector('.repeater-item');
+        const newItem = template.cloneNode(true);
+        
+        newItem.querySelectorAll('input, select').forEach(input => {
+            input.value = '';
+        });
+
+        newItem.querySelector('.remove-repeater-item').addEventListener('click', function() {
+            if (repeaterContainer.children.length > 1) {
+                newItem.remove();
+            }
+        });
+
+        repeaterContainer.appendChild(newItem);
+        
+        // Reinitialize select2 for the new item
+        $(newItem).find('.select2').select2();
+    }
+
+    addButton.addEventListener('click', createRepeaterItem);
+
+    repeaterContainer.querySelector('.remove-repeater-item').addEventListener('click', function(e) {
+        if (repeaterContainer.children.length > 1) {
+            e.target.closest('.repeater-item').remove();
+        }
+    });
+});
+
         // Modal Function
 
         function edit(e) {

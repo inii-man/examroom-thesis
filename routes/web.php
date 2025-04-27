@@ -28,6 +28,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     //dashboard
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/monitoring', [HomeController::class, 'monitoring'])->name('monitoring');
 
     //users
     Route::get('/get-profile', [UserController::class, 'get_profile'])->name('profile.index');
@@ -91,4 +92,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/konfigurasi-assesment/detail-assesment', [KonfigurasiAssesmentController::class, 'detail_assesment']);
     Route::get('/konfigurasi-assesment/detail-manajemen', [KonfigurasiAssesmentController::class, 'detail_manajemen']);
     Route::resource('konfigurasi-assesment', KonfigurasiAssesmentController::class)->except(['show']);
+
+    Route::get('/konfigurasi-assesment-monitoring', [KonfigurasiAssesmentController::class, 'monitoring']);
 });

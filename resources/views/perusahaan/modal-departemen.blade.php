@@ -12,23 +12,33 @@
                 <input type="hidden" name="_method" value="POST">
                 <input type="hidden" id="id" name="ship_id" />
                 <div class="modal-body">
-                    <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 20px 0; border-radius: 5px; display: flex; align-items: center;">  
-                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
-                        Saat ini aplikasi masih dalam tahap semi-prototype. Data yang Anda input tidak akan tersimpan karena belum terhubung ke database. Anda dapat tetap mengisi form dan menekan tombol "Simpan Data".  
-                    </div>  
-                    <div class="row">
-                        <div class="col-12 mb-3 form-group">
-                            <label for="ship_name" class="form-label">Nama Departemen</label>
-                            <input type="text" id="ship_name" name="ship_name" class="form-control"
-                                placeholder="Nama Departemen" />
-                            <div class="invalid-feedback"></div>
-                        </div>
-                    </div>
+    <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 20px 0; border-radius: 5px; display: flex; align-items: center;">  
+        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+        Saat ini aplikasi masih dalam tahap semi-prototype. Data yang Anda input tidak akan tersimpan karena belum terhubung ke database. Anda dapat tetap mengisi form dan menekan tombol "Simpan Data".  
+    </div>  
+    
+    <!-- Repeater container -->
+    <div id="departemen-repeater">
+        <!-- Repeatable section -->
+        <div class="repeater-item mb-3">
+            <div class="row" style="align-items: center">
+                <div class="col-10 mb-3 form-group">
+                    <label for="nama_departemen" class="form-label">Nama Departemen</label>
+                    <input type="text" name="nama_departemen" class="form-control"
+                        placeholder="Nama Departemen" />
+                    <div class="invalid-feedback"></div>
                 </div>
-                <div class="d-flex justify-content-between modal-footer">
-                    <button class="btn btn-outline-success" data-bs-dismiss="modal">+ Data Departemen</button>
-                    <button  id="modal-button" class="btn btn-primary">Simpan Data</button>
+                <div class="col-2">
+            <button type="button" class="btn btn-outline-danger btn-sm remove-repeater-item"><i class="ti ti-trash"></i></button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-between modal-footer">
+    <button type="button" class="btn btn-outline-success" id="add-departemen">+ Data Departemen</button>
+    <button type="button" id="modal-button" class="btn btn-primary">Simpan Data</button>
+</div>
             {{-- </form> --}}
         </div>
     </div>

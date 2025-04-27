@@ -11,7 +11,7 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-md-9 col-12">
-            <h4 class="fw-bold mb-0">Pengelolaan Assesment</h4>
+            <h4 class="fw-bold mb-0">Monitoring Assesment</h4>
         </div>
         <div class="col-md-3 col-12 text-end">
             {{-- <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modal-add"><i

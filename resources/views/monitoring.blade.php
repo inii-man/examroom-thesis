@@ -13,7 +13,7 @@
         <div class="col-12">
             <div class="row mb-4">
                 <div class="col-md-10 col-12">
-                    <h4 class="fw-bold mb-0">Pengelolaan Assesment</h4>
+                    <h4 class="fw-bold mb-0">Monitoring Assesment</h4>
                 </div>
             </div>
             <div class="col-md-12 col-12 ">

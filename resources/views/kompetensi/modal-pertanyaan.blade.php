@@ -8,33 +8,46 @@
             </div>
             {{-- <form action="{{ route('perusahaan.store') }}" class="default-form" autocomplete="off"
                 function-callback="afterAction"> --}}
-                @csrf
-                <input type="hidden" name="_method" value="POST">
-                <input type="hidden" id="id" name="ship_id" />
-                <div class="modal-body">
-                    <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 20px 0; border-radius: 5px; display: flex; align-items: center;">  
-                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
-                        Saat ini aplikasi masih dalam tahap semi-prototype. Data yang Anda input tidak akan tersimpan karena belum terhubung ke database. Anda dapat tetap mengisi form dan menekan tombol "Simpan Data".  
-                    </div>  
-                    <div class="row" >
-                        <div class="col-8 mb-3 form-group">
-                            <label for="ship_name" class="form-label">Pertanyaan</label>
-                            <input type="text" id="ship_name" name="ship_name" class="form-control"
-                                placeholder="Pertanyaan" />
-                            <div class="invalid-feedback"></div>
+            @csrf
+            <input type="hidden" name="_method" value="POST">
+            <input type="hidden" id="id" name="ship_id" />
+            <div class="modal-body">
+                <div
+                    style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 20px 0; border-radius: 5px; display: flex; align-items: center;">
+                    <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>
+                    Saat ini aplikasi masih dalam tahap semi-prototype. Data yang Anda input tidak akan tersimpan karena
+                    belum terhubung ke database. Anda dapat tetap mengisi form dan menekan tombol "Simpan Data".
+                </div>
+                <div id="kompetensi-repeater">
+                    <!-- Repeatable section -->
+                    <div class="repeater-item d-flex justify-content-center align-items-center mb-4">
+                        <div class="row col-10">
+                            {{-- <div class="col-11 ms-3 text-end" style="position: absolute;">
+                            <button type="button" style="background-color:red" class="btn-close remove-repeater-item"></button>
+                        </div> --}}
+                            <div class="col-8 mb-3 form-group">
+                                <label for="ship_name" class="form-label">Pertanyaan</label>
+                                <input type="text" id="ship_name" name="ship_name" class="form-control"
+                                    placeholder="Pertanyaan" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-4 mb-3 form-group">
+                                <label for="ship_type" class="form-label">Level Pertanyaan</label>
+                                <input type="text" id="ship_type" name="ship_type" class="form-control"
+                                    placeholder="Level Pertanyaan" />
+                                <div class="invalid-feedback"></div>
+                            </div>
                         </div>
-                        <div class="col-4 mb-3 form-group">
-                            <label for="ship_type" class="form-label">Level Pertanyaan</label>
-                            <input type="text" id="ship_type" name="ship_type" class="form-control"
-                                placeholder="Level Pertanyaan" />
-                            <div class="invalid-feedback"></div>
+                        <div class="col-2">
+                            <button type="button" class="mt-2 ms-3 btn btn-outline-danger remove-repeater-item"><i class="ti ti-trash"></i></button>
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-between modal-footer">
-                    <button class="btn btn-outline-success" data-bs-dismiss="modal">+ Data Pertanyaan</button>
-                    <button  id="modal-button" class="btn btn-primary">Simpan Data</button>
-                </div>
+            </div>
+            <div class="d-flex justify-content-between modal-footer">
+                <button class="btn btn-outline-success" id="add-kompetensi">+ Data Pertanyaan</button>
+                <button id="modal-button" class="btn btn-primary">Simpan Data</button>
+            </div>
             {{-- </form> --}}
         </div>
     </div>

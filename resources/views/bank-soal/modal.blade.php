@@ -27,6 +27,9 @@
                         <!-- Repeatable section -->
                         <div class="repeater-item mb-3">
                             <div class="row mx-1" style="border: 0.5px solid; border-radius: 5px; padding: 10px">
+                                <div class="col-11 text-end" style="position: absolute;">
+                                    <button type="button" style="background-color:red" class="btn-close remove-repeater-item"></button>
+                                </div>
                                 <div class="col-8 mb-3 form-group">
                                     <label for="kompetensi_name" class="form-label">Nama Kompetensi</label>
                                     <select name="kompetensi_name" class=" form-control" data-placeholder="Nama Kompetensi">
@@ -43,7 +46,7 @@
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-danger btn-sm remove-repeater-item mt-2">Hapus</button>
+                           
                         </div>
                     </div>
                 </div>

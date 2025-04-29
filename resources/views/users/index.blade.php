@@ -14,12 +14,12 @@
             <h4 class="fw-bold mb-0">Konfigurasi Pengguna</h4>
         </div>
         <div class="col-md-2 col-12 text-end">
-            <button class="btn btn-primary btn-icon" data-bs-toggle="offcanvas" data-bs-target="#modal-filter"><i
-                    class="tf-icons ti ti-filter"></i></button>
+            {{-- <button class="btn btn-primary btn-icon" data-bs-toggle="offcanvas" data-bs-target="#modal-filter"><i
+                    class="tf-icons ti ti-filter"></i></button> --}}
         </div>
     </div>
-    <p class="text-secondary">Data filtering by : <i class='tf-icons ti ti-alert-circle text-primary pb-1'
-            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="" id="tooltip-filter"></i></p>
+    {{-- <p class="text-secondary">Data filtering by : <i class='tf-icons ti ti-alert-circle text-primary pb-1'
+            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="" id="tooltip-filter"></i></p> --}}
     <div class="card">
         <div class="card-datatable table-responsive">
             <table class="table" id="users-table">
@@ -88,27 +88,12 @@
                     status: 'Active',
                     action: `
                         <div class="d-flex align-items-center gap-2">
-                            <a  class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
+                            <a id="button-edit" href="#" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
                             <a href="javascript:void(0)" class="nonaktif btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-info"><i class="ti ti-repeat"></i></a>
+                            <a id="button-reset" href="javascript:void(0)" class="btn btn-sm btn-icon btn-info"><i class="ti ti-repeat"></i></a>
                         </div>
                         `
-                },
-                {
-                    id: 2,
-                    name: 'John Doe',
-                    company: 'PT. A',
-                    email: 'i7u0I@example.com',
-                    role: 'Admin',
-                    status: 'Active',
-                    action: `
-                        <div class="d-flex align-items-center gap-2">
-                            <a  class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
-                            <a href="javascript:void(0)" class="nonaktif btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-info"><i class="ti ti-repeat"></i></a>
-                        </div>
-                        `
-                },
+                }
             ];
             $(dataTableId).DataTable({
                 // ajax: routeList,
@@ -158,159 +143,9 @@
                 },
                 buttons: [
                     @if (auth()->user()->hasPermissionTo($managePermission))
-                        {
-                            extend: 'collection',
-                            className: 'btn btn-label-secondary dropdown-toggle ms-4 waves-effect waves-light',
-                            text: '<i class="ti ti-upload me-2 ti-xs"></i>Export',
-                            buttons: [{
-                                    extend: 'print',
-                                    text: '<i class="ti ti-printer me-2" ></i>Print',
-                                    className: 'dropdown-item',
-                                    exportOptions: {
-                                        columns: [1, 2, 3, 4, 5],
-                                        // prevent avatar to be print
-                                        format: {
-                                            body: function(inner, coldex, rowdex) {
-                                                if (inner.length <= 0) return inner;
-                                                var el = $.parseHTML(inner);
-                                                var result = '';
-                                                $.each(el, function(index, item) {
-                                                    if (item.classList !== undefined && item
-                                                        .classList.contains('user-name')) {
-                                                        result = result + item.lastChild
-                                                            .firstChild
-                                                            .textContent;
-                                                    } else if (item.innerText === undefined) {
-                                                        result = result + item.textContent;
-                                                    } else result = result + item.innerText;
-                                                });
-                                                return result;
-                                            }
-                                        }
-                                    },
-                                    customize: function(win) {
-                                        //customize print view for dark
-                                        $(win.document.body)
-                                            .css('color', headingColor)
-                                            .css('border-color', borderColor)
-                                            .css('background-color', bodyBg);
-                                        $(win.document.body)
-                                            .find('table')
-                                            .addClass('compact')
-                                            .css('color', 'inherit')
-                                            .css('border-color', 'inherit')
-                                            .css('background-color', 'inherit');
-                                    }
-                                },
-                                {
-                                    extend: 'csv',
-                                    text: '<i class="ti ti-file-text me-2" ></i>Csv',
-                                    className: 'dropdown-item',
-                                    exportOptions: {
-                                        columns: [1, 2, 3, 4, 5],
-                                        // prevent avatar to be display
-                                        format: {
-                                            body: function(inner, coldex, rowdex) {
-                                                if (inner.length <= 0) return inner;
-                                                var el = $.parseHTML(inner);
-                                                var result = '';
-                                                $.each(el, function(index, item) {
-                                                    if (item.classList !== undefined && item
-                                                        .classList.contains('user-name')) {
-                                                        result = result + item.lastChild
-                                                            .firstChild
-                                                            .textContent;
-                                                    } else if (item.innerText === undefined) {
-                                                        result = result + item.textContent;
-                                                    } else result = result + item.innerText;
-                                                });
-                                                return result;
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    extend: 'excel',
-                                    text: '<i class="ti ti-file-spreadsheet me-2"></i>Excel',
-                                    className: 'dropdown-item',
-                                    exportOptions: {
-                                        columns: [1, 2, 3, 4, 5],
-                                        // prevent avatar to be display
-                                        format: {
-                                            body: function(inner, coldex, rowdex) {
-                                                if (inner.length <= 0) return inner;
-                                                var el = $.parseHTML(inner);
-                                                var result = '';
-                                                $.each(el, function(index, item) {
-                                                    if (item.classList !== undefined && item
-                                                        .classList.contains('user-name')) {
-                                                        result = result + item.lastChild
-                                                            .firstChild
-                                                            .textContent;
-                                                    } else if (item.innerText === undefined) {
-                                                        result = result + item.textContent;
-                                                    } else result = result + item.innerText;
-                                                });
-                                                return result;
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    extend: 'pdf',
-                                    text: '<i class="ti ti-file-code-2 me-2"></i>Pdf',
-                                    className: 'dropdown-item',
-                                    exportOptions: {
-                                        columns: [1, 2, 3, 4, 5],
-                                        // prevent avatar to be display
-                                        format: {
-                                            body: function(inner, coldex, rowdex) {
-                                                if (inner.length <= 0) return inner;
-                                                var el = $.parseHTML(inner);
-                                                var result = '';
-                                                $.each(el, function(index, item) {
-                                                    if (item.classList !== undefined && item
-                                                        .classList.contains('user-name')) {
-                                                        result = result + item.lastChild
-                                                            .firstChild
-                                                            .textContent;
-                                                    } else if (item.innerText === undefined) {
-                                                        result = result + item.textContent;
-                                                    } else result = result + item.innerText;
-                                                });
-                                                return result;
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    extend: 'copy',
-                                    text: '<i class="ti ti-copy me-2" ></i>Copy',
-                                    className: 'dropdown-item',
-                                    exportOptions: {
-                                        columns: [1, 2, 3, 4, 5],
-                                        // prevent avatar to be display
-                                        format: {
-                                            body: function(inner, coldex, rowdex) {
-                                                if (inner.length <= 0) return inner;
-                                                var el = $.parseHTML(inner);
-                                                var result = '';
-                                                $.each(el, function(index, item) {
-                                                    if (item.classList !== undefined && item
-                                                        .classList.contains('user-name')) {
-                                                        result = result + item.lastChild
-                                                            .firstChild
-                                                            .textContent;
-                                                    } else if (item.innerText === undefined) {
-                                                        result = result + item.textContent;
-                                                    } else result = result + item.innerText;
-                                                });
-                                                return result;
-                                            }
-                                        }
-                                    }
-                                }
-                            ]
+                    {
+                            text: '<i class="ti ti-upload me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Export</span>',
+                            className: 'add-new btn btn-muted ms-4 waves-effect waves-light export',
                         }, {
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">' +
                                 addButtonTitle + '</span>',
@@ -378,6 +213,57 @@
           ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
                         <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
                         Ini hanya simulasi. Data tidak benar-benar dinonaktifkan karena aplikasi masih dalam tahap semi-prototipe.  
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
+
+            $(document).on('click', '#button-edit', function(e) {
+            Swal.fire({
+       
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                       Button yang Anda klik merupakan Button Untuk Mengedit User.
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
+
+            $(document).on('click', '#button-reset', function(e) {
+            Swal.fire({
+       
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                       Button yang Anda klik merupakan Button Reset Password untuk Mengatur ulang Password Akun Peserta Asesmen.
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
+
+            $(document).on('click', '.export', function(e) {
+            Swal.fire({
+       
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                       Button yang Anda klik merupakan Button untuk Mengunduh Data Peserta Asesmen.
                     </div>  
                     `,
         customClass: {

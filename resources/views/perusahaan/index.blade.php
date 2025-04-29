@@ -98,8 +98,8 @@
                 action: `
                         <div class="d-flex align-items-center gap-2">
                             <a href="/perusahaan/detail-perusahaan" class="btn btn-sm btn-icon btn-primary"><i class="ti ti-file-text"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
+                            <a id="button-edit" href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning"><i class="ti ti-edit"></i></a>
+                            <a href="javascript:void(0)" class="nonaktif btn btn-sm btn-icon btn-danger"><i class="ti ti-circle-x"></i></a>
                         </div>
                         `
             }, ];
@@ -154,6 +154,42 @@
         }
 
         // Modal Function
+
+        $(document).on('click', '.nonaktif', function(e) {
+            Swal.fire({
+        title: 'Apakah Anda Yakin ingin Non-Aktifkan Data?',
+        text: 'You clicked the button!',
+        icon: 'warning',
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                        Ini hanya simulasi. Data tidak benar-benar dinonaktifkan karena aplikasi masih dalam tahap semi-prototipe.  
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
+
+            $(document).on('click', '#button-edit', function(e) {
+            Swal.fire({
+       
+        html:
+          ` <div style="border: 1px solid #F09625; background-color: #FFF3CD; color: #F09625; padding: 15px; margin: 0px 0; border-radius: 5px; display: flex; align-items: center;">  
+                        <span style="margin-right: 10px;"><i class="ti ti-alert-circle"></i></span>  
+                       Button yang Anda klik merupakan Button Untuk Mengedit Perusahaan.
+                    </div>  
+                    `,
+        customClass: {
+          confirmButton: 'btn btn-primary waves-effect waves-light'
+        },
+        confirmButtonText: 'Ok, Saya Mengerti',
+        buttonsStyling: false
+      });
+            })
 
         function edit(e) {
             let id = e.attr('data-id');

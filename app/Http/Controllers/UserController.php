@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 //Controller Import
@@ -21,8 +22,8 @@ class UserController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:user.list|user.manage', ['only' => ['index', 'show']]);
-        $this->middleware('permission:user.manage', ['only' => ['store', 'edit', 'update', 'destroy', 'update_status']]);
+        // $this->middleware('permission:user.list|user.manage', ['only' => ['index', 'show']]);
+        // $this->middleware('permission:user.manage', ['only' => ['store', 'edit', 'update', 'destroy', 'update_status']]);
     }
 
     public function index()

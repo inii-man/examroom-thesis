@@ -17,8 +17,8 @@ class BranchController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:branch.list|branch.manage', ['only' => ['index','show']]);
-         $this->middleware('permission:branch.manage', ['only' => ['store','edit','update','destroy']]);
+        //  $this->middleware('permission:branch.list|branch.manage', ['only' => ['index','show']]);
+        //  $this->middleware('permission:branch.manage', ['only' => ['store','edit','update','destroy']]);
     }
 
     public function index()
@@ -30,7 +30,7 @@ class BranchController extends Controller
     {
         $branches = new Branch;
 
-        if(request()->has('status')){
+        if (request()->has('status')) {
             $branches = $branches->where('status', request()->status);
         }
 
@@ -44,10 +44,10 @@ class BranchController extends Controller
                 }
             })
             ->addColumn('action', function ($row) {
-                if(auth()->user()->hasPermissionTo('branch.manage')){
+                if (auth()->user()->hasPermissionTo('branch.manage')) {
                     $icon = ($row->status) ? "ti-circle-x" : "ti-circle-check";
                     $color = ($row->status) ? "danger" : "success";
-                    
+
                     $url = route('branches.update-status', $row->branch_id);
 
                     $btn = "<div class='d-flex justfiy-content-center'>
@@ -72,7 +72,7 @@ class BranchController extends Controller
     {
         try {
             DB::beginTransaction();
-            foreach($request->data as $data) {
+            foreach ($request->data as $data) {
                 Branch::create($data);
             }
             DB::commit();
@@ -92,7 +92,7 @@ class BranchController extends Controller
     {
         try {
             DB::beginTransaction();
-            foreach($request->data as $data) {
+            foreach ($request->data as $data) {
                 $branch->update($data);
             }
             DB::commit();
@@ -117,7 +117,7 @@ class BranchController extends Controller
             return Response::errorCatch($e);
         }
     }
-    
+
     public function destroy(Branch $branch)
     {
         //

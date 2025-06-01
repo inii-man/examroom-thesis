@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 //Controller Import
@@ -17,13 +18,13 @@ class RoleController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:role.list|role.manage', ['only' => ['index', 'card']]);
-         $this->middleware('permission:role.manage', ['only' => ['store','edit','update','destroy']]);
+        //  $this->middleware('permission:role.list|role.manage', ['only' => ['index', 'card']]);
+        //  $this->middleware('permission:role.manage', ['only' => ['store','edit','update','destroy']]);
     }
 
     public function index()
     {
-        $data['roles'] = Role::with(['users' => function($query){
+        $data['roles'] = Role::with(['users' => function ($query) {
             $query->select('name', 'profile_pic');
         }])->get();
 
@@ -35,8 +36,9 @@ class RoleController extends Controller
         return view('roles.index', $data);
     }
 
-    public function card(){
-        $data['roles'] = Role::with(['users' => function($query){
+    public function card()
+    {
+        $data['roles'] = Role::with(['users' => function ($query) {
             $query->select('name', 'profile_pic');
         }])->get();
 
@@ -65,7 +67,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $role->load('permissions');
-        
+
         return $role;
     }
 

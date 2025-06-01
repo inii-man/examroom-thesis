@@ -225,7 +225,6 @@
                     }
                 },
                 buttons: [
-                    @if (auth()->user()->hasPermissionTo($managePermission))
                         {
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Kompetensi di Asesment</span>',
                             className: 'add-new btn btn-primary ms-4 waves-effect waves-light',
@@ -235,7 +234,6 @@
                             }
                         },
                         
-                    @endif
                 ],
             });
 
@@ -276,7 +274,6 @@
                     }
                 },
                 buttons: [
-                    @if (auth()->user()->hasPermissionTo($managePermission))
                         {
                             text: '<i class="ti ti-send me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Send Email</span>',
                             className: 'add-new btn btn-outline-primary ms-4 waves-effect waves-light',
@@ -292,7 +289,6 @@
                                 'data-bs-target': '#modal-add'
                             }
                         }
-                    @endif
                 ],
             });
         }

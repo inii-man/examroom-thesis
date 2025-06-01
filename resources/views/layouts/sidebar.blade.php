@@ -36,8 +36,8 @@
         @endif
 
         {{-- Master Data --}}
-        @if (app_config('show_dummy') == 'true' || isSuperAdmin())
-            @if (isMenuHeaderVisible(['ship.list', 'branch.list', 'light-house.list, perusahaan.list']))
+        {{-- @if (app_config('show_dummy') == 'true' || isSuperAdmin())
+            @if (isMenuHeaderVisible(['ship.list', 'branch.list', 'light-house.list, perusahaan.list'])) --}}
                 {{-- <li class="menu-header small">
                     <span class="menu-header-text" data-i18n="Master Data">Master Data</span>
                 </li> --}}
@@ -75,8 +75,8 @@
                         </li>
                     </ul>
                 </li>
-            @endif
-        @endif
+            {{-- @endif
+        @endif --}}
 
         <li class="menu-item {{ isActiveMenuItem('monitoring') }}">
             <a href="/monitoring" class="menu-link">
@@ -104,22 +104,22 @@
                     </a>
                 </li>
             @endcan --}}
-            @can('role.list')
+            {{-- @can('role.list') --}}
             <li class="menu-item {{ isActiveMenuItem('roles') }}">
                 <a href="/roles" class="menu-link">
                     <i class="menu-icon ti ti-settings"></i>
                     <div data-i18n="Roles & Permission">Roles & Permission</div>
                 </a>
             </li>
-            @endcan
-            @can('config.manage')
-            <li class="menu-item {{ isActiveMenuItem('config') }}">
+            {{-- @endcan --}}
+            {{-- @can('config.manage') --}}
+            {{-- <li class="menu-item {{ isActiveMenuItem('config') }}">
                 <a href="/get-config" class="menu-link">
                     <i class="menu-icon ti ti-table"></i>
                     <div data-i18n="App Config">App Config</div>
                 </a>
-            </li>
-            @endcan
+            </li> --}}
+            {{-- @endcan --}}
         @endif
     </ul>
 

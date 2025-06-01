@@ -142,7 +142,6 @@
                     }
                 },
                 buttons: [
-                    @if (auth()->user()->hasPermissionTo($managePermission))
                     {
                             text: '<i class="ti ti-upload me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Export</span>',
                             className: 'add-new btn btn-muted ms-4 waves-effect waves-light export',
@@ -155,7 +154,6 @@
                                 'data-bs-target': '#modal-add'
                             }
                         }
-                    @endif
                 ],
             });
         }

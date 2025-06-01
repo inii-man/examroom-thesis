@@ -17,8 +17,8 @@ class ShipController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:ship.list|ship.manage', ['only' => ['index', 'show']]);
-        $this->middleware('permission:ship.manage', ['only' => ['store', 'edit', 'update', 'destroy']]);
+        // $this->middleware('permission:ship.list|ship.manage', ['only' => ['index', 'show']]);
+        // $this->middleware('permission:ship.manage', ['only' => ['store', 'edit', 'update', 'destroy']]);
     }
 
     public function index()

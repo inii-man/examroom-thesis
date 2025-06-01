@@ -58,9 +58,10 @@ if (!function_exists('profilePicture')) {
     function profilePicture($user = null)
     {
         $user = $user ?? auth()->user();
-        $path = 'storage/profile/' . $user->profile_pic;
-        if (($user->profile_pic != null) && File::exists(public_path($path))) {
-            return asset($path);
+        // $path = 'storage/profile/' . $user->profile_pic;
+        $path = '';
+        if (isset($user->profile_pic) && ($user->profile_pic != null) && File::exists(public_path($path))) {
+            // return asset($path);
         } else {
             $colors = [
                 ['color' => '7F9CF5', 'background' => 'EBF4FF'],
@@ -75,7 +76,7 @@ if (!function_exists('profilePicture')) {
                 ['color' => '34D399', 'background' => 'ECFDF5'],
             ];
             $color = $colors[rand(0, count($colors) - 1)];
-            return 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&color=' . $color['color'] . '&background=' . $color['background'];
+            // return 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&color=' . $color['color'] . '&background=' . $color['background'];
             // alternative
             // return url('/assets/img/avatars/blank.png');
             // return asset('/assets/img/front-pages/icons/user.png');

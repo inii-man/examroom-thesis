@@ -140,7 +140,7 @@
                     }
                 },
                 buttons: [
-                    @if (auth()->user()->hasPermissionTo($managePermission))
+                    
                         {
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">' +
                                 addButtonTitle + '</span>',
@@ -150,7 +150,6 @@
                                 'data-bs-target': '#modal-add'
                             }
                         }
-                    @endif
                 ],
             });
         }

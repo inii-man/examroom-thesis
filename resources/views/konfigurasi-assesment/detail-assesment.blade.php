@@ -215,19 +215,6 @@
                         previous: '<i class="ti ti-chevron-left ti-sm"></i>'
                     }
                 },
-                // buttons: [
-                //     @if (auth()->user()->hasPermissionTo($managePermission))
-                //         {
-                //             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Course</span>',
-                //             className: 'add-new btn btn-primary ms-4 waves-effect waves-light',
-                //             attr: {
-                //                 'data-bs-toggle': 'modal',
-                //                 'data-bs-target': '#modal-add'
-                //             }
-                //         },
-                        
-                //     @endif
-                // ],
             });
 
             $(dataTableIdd).DataTable({
@@ -269,25 +256,6 @@
                         previous: '<i class="ti ti-chevron-left ti-sm"></i>'
                     }
                 },
-                // buttons: [
-                //     @if (auth()->user()->hasPermissionTo($managePermission))
-                //         {
-                //             text: '<i class="ti ti-send me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Send Email</span>',
-                //             className: 'add-new btn btn-outline-primary ms-4 waves-effect waves-light',
-                //             attr: {
-                //                 'data-bs-toggle': 'modal',
-                //                 'data-bs-target': '#modal-add'
-                //             }
-                //         },{
-                //             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Users</span>',
-                //             className: 'add-new btn btn-primary ms-4 waves-effect waves-light',
-                //             attr: {
-                //                 'data-bs-toggle': 'modal',
-                //                 'data-bs-target': '#modal-add'
-                //             }
-                //         }
-                //     @endif
-                // ],
             });
         }
 

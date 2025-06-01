@@ -17,8 +17,8 @@ class LightHouseController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:light_house.list|light_house.manage', ['only' => ['index','show']]);
-         $this->middleware('permission:light_house.manage', ['only' => ['create', 'store','edit','update','destroy']]);
+        //  $this->middleware('permission:light_house.list|light_house.manage', ['only' => ['index','show']]);
+        //  $this->middleware('permission:light_house.manage', ['only' => ['create', 'store','edit','update','destroy']]);
     }
 
     public function index()
@@ -31,15 +31,15 @@ class LightHouseController extends Controller
     {
         $light_houses = new LightHouse;
 
-        if(request()->has('status')){
+        if (request()->has('status')) {
             $light_houses = $light_houses->where('status', request()->status);
         }
 
-        if(request()->has('light_house_structure')){
+        if (request()->has('light_house_structure')) {
             $light_houses = $light_houses->where('light_house_structure', request()->light_house_structure);
         }
 
-        if(request()->has('light_house_type')){
+        if (request()->has('light_house_type')) {
             $light_houses = $light_houses->where('light_house_type', request()->light_house_type);
         }
 
@@ -53,14 +53,14 @@ class LightHouseController extends Controller
                 }
             })
             ->addColumn('action', function ($row) {
-                if(auth()->user()->hasPermissionTo('light_house.manage')){
+                if (auth()->user()->hasPermissionTo('light_house.manage')) {
                     $icon = ($row->status) ? "ti-circle-x" : "ti-circle-check";
                     $color = ($row->status) ? "danger" : "success";
-                    
+
                     $url = route('light-houses.update-status', $row->light_house_id);
 
                     $btn = "<div class='d-flex justfiy-content-center'>
-                        <a href='".route('light-houses.edit', $row->light_house_id)."' class='cursor-pointer mx-1 text-warning'>
+                        <a href='" . route('light-houses.edit', $row->light_house_id) . "' class='cursor-pointer mx-1 text-warning'>
                             <i class='tf-icons ti ti-edit' ></i>
                         </a>
                         <a title='Activate' data-url='{$url}' data-function='afterUpdateStatus' class='update-status cursor-pointer mx-1  text-{$color}'>
@@ -130,13 +130,14 @@ class LightHouseController extends Controller
             return Response::errorCatch($e);
         }
     }
-    
+
     public function destroy(LightHouse $light_house)
     {
         //
     }
 
-    private function createEditData(){
+    private function createEditData()
+    {
         $data = [
             'light_house_structure' => [
                 'Round',

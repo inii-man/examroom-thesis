@@ -17,8 +17,8 @@ class BankSoalController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:light_house.list|light_house.manage', ['only' => ['index', 'show']]);
-        $this->middleware('permission:light_house.manage', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+        // $this->middleware('permission:light_house.list|light_house.manage', ['only' => ['index', 'show']]);
+        // $this->middleware('permission:light_house.manage', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     }
 
     public function index()

@@ -16,8 +16,8 @@ class ConfigController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:config.list|config.manage', ['only' => ['index']]);
-        $this->middleware('permission:config.manage', ['only' => ['store', 'reset']]);
+        // $this->middleware('permission:config.list|config.manage', ['only' => ['index']]);
+        // $this->middleware('permission:config.manage', ['only' => ['store', 'reset']]);
     }
 
     public function index()

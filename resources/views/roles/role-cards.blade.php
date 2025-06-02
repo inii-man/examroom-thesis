@@ -9,7 +9,9 @@
                             @foreach ($role['users'] as $user)
                                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
                                     data-bs-original-title="{{ $user['name'] }}" class="avatar pull-up">
-                                    <img class="rounded-circle" src="{{ profilePicture($user) }}" alt="Avatar" />
+                                    {{-- <img class="rounded-circle" src="{{ profilePicture($user) }}" alt="Avatar" /> --}}
+                                        <img src="/assets/img/avatars/1.png" alt class="rounded-circle" />
+                                
                                 </li>
                             @endforeach
                         @else

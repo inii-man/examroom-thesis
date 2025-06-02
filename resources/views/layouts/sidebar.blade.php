@@ -113,12 +113,12 @@
             </li>
             {{-- @endcan --}}
             {{-- @can('config.manage') --}}
-            {{-- <li class="menu-item {{ isActiveMenuItem('config') }}">
+            <li class="menu-item {{ isActiveMenuItem('config') }}">
                 <a href="/get-config" class="menu-link">
                     <i class="menu-icon ti ti-table"></i>
                     <div data-i18n="App Config">App Config</div>
                 </a>
-            </li> --}}
+            </li>
             {{-- @endcan --}}
         @endif
     </ul>
